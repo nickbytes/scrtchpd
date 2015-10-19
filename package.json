@@ -75,6 +75,7 @@
     "keymirror": "^0.1.1",
     "object-assign": "^4.0.1",
     "react": "^0.13.3",
+    "react-codemirror": "^0.1.6",
     "react-router": "^0.13.3"
   }
 }
