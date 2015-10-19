@@ -1,12 +1,1444 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 17, ../../../../../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/* apply a natural box layout model to all elements */
+/* line 14, ../../../sass/partials/_defaults.scss */
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* apply a natural box layout model to all elements */
+/* line 14, ../../../sass/partials/_defaults.scss */
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 2, ../../../sass/partials/_layout.scss */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 3, ../../../sass/partials/_layout.scss */
 body {
+  background: rgba(231, 232, 226, 0.5);
+  font: normal 24px/28px "pt-sans", Georgia, "Times New Roman", serif;
+}
+
+/* line 7, ../../../sass/partials/_layout.scss */
+html, body, form, #preview {
+  height: 100%;
+}
+
+/* line 10, ../../../sass/partials/_layout.scss */
+textarea, #preview, .CodeMirror {
+  background: #fff;
+  color: #333;
+  border: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 21, ../../../sass/partials/_layout.scss */
+#preview {
+  display: none;
+}
+
+/* line 24, ../../../sass/partials/_layout.scss */
+textarea:focus {
+  outline: 0;
+  outline: none;
+}
+
+/* line 28, ../../../sass/partials/_layout.scss */
+textarea {
+  opacity: 0.1;
+  position: relative;
+  z-index: 2;
+}
+
+/* line 35, ../../../sass/partials/_layout.scss */
+.sidebar {
+  float: left;
+  width: 29%;
+  height: 100%;
+  display: none;
+}
+
+/* line 43, ../../../sass/partials/_layout.scss */
+.writer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  -webkit-transition: all, 0.3s;
+  -moz-transition: all, 0.3s;
+  -o-transition: all, 0.3s;
+  transition: all, 0.3s;
+}
+@media only screen and (min-width: 641px) and (max-width: 971px) {
+  /* line 43, ../../../sass/partials/_layout.scss */
+  .writer {
+    width: 95%;
+    float: right;
+  }
+}
+@media only screen and (min-width: 972px) {
+  /* line 43, ../../../sass/partials/_layout.scss */
+  .writer {
+    width: 97%;
+    float: right;
+  }
+}
+
+/* BASICS */
+/* line 64, ../../../sass/partials/_layout.scss */
+.CodeMirror {
+  /* Set height, width, borders, and global font properties here */
+  /* font-family: monospace; */
+  line-height: 18px !important;
+  height: 100%;
+  padding: 0em 5% 0em 0;
+  color: #272f35;
+}
+
+/* line 74, ../../../sass/partials/_layout.scss */
+.CodeMirror-scroll {
+  /* Set scrolling behaviour here */
+  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 100%;
+}
+
+/* PADDING */
+/* line 82, ../../../sass/partials/_layout.scss */
+.CodeMirror-lines {
+  padding: 2em 0;
+  /* Vertical padding around content */
+  width: 100%;
+  height: 100%;
+  background: #fefffd;
+  -webkit-transition: all, 0.3s;
+  -moz-transition: all, 0.3s;
+  -o-transition: all, 0.3s;
+  transition: all, 0.3s;
+}
+@media only screen and (min-width: 972px) {
+  /* line 82, ../../../sass/partials/_layout.scss */
+  .CodeMirror-lines {
+    width: 90%;
+    max-width: 1100px;
+  }
+}
+
+/* line 94, ../../../sass/partials/_layout.scss */
+.CodeMirror pre {
+  padding: 0 5%;
+  /* Horizontal padding of content */
+  margin-bottom: 5px;
+  position: relative;
+  font: normal 16px/21px "pt-sans", Georgia, "Times New Roman", serif;
+  -webkit-transition: all, 0.3s;
+  -moz-transition: all, 0.3s;
+  -o-transition: all, 0.3s;
+  transition: all, 0.3s;
+}
+@media only screen and (min-width: 641px) and (max-width: 971px) {
+  /* line 94, ../../../sass/partials/_layout.scss */
+  .CodeMirror pre {
+    padding: 0 15%;
+    font: normal 18px/24px "pt-sans", Georgia, "Times New Roman", serif;
+  }
+}
+@media only screen and (min-width: 972px) {
+  /* line 94, ../../../sass/partials/_layout.scss */
+  .CodeMirror pre {
+    padding: 0 10%;
+    font: normal 20px/28px "pt-sans", Georgia, "Times New Roman", serif;
+  }
+}
+
+/* line 110, ../../../sass/partials/_layout.scss */
+.CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler {
+  background-color: white;
+  /* The little square between H and V scrollbars */
+}
+
+/* GUTTER */
+/* line 116, ../../../sass/partials/_layout.scss */
+.CodeMirror-gutters {
+  border-right: 1px solid #ddd;
+  background-color: #f7f7f7;
+  white-space: nowrap;
+}
+
+/* line 122, ../../../sass/partials/_layout.scss */
+.CodeMirror-linenumber {
+  padding: 0 3px 0 5px;
+  min-width: 20px;
+  text-align: right;
+  color: #999;
+}
+
+/* CURSOR */
+/* line 131, ../../../sass/partials/_layout.scss */
+.CodeMirror div.CodeMirror-cursor {
+  border-left: 1px solid black;
+  z-index: 3;
+}
+
+/* Shown when moving in bi-directional text */
+/* line 136, ../../../sass/partials/_layout.scss */
+.CodeMirror div.CodeMirror-secondarycursor {
+  border-left: 1px solid silver;
+}
+
+/* line 139, ../../../sass/partials/_layout.scss */
+.CodeMirror.cm-keymap-fat-cursor div.CodeMirror-cursor {
+  width: auto;
+  border: 0;
+  background: #7e7;
+  z-index: 1;
+}
+
+/* Can style cursor different in overwrite (non-insert) mode */
+/* line 148, ../../../sass/partials/_layout.scss */
+.cm-tab {
+  display: inline-block;
+}
+
+/* line 150, ../../../sass/partials/_layout.scss */
+.cm-s-default .cm-formatting {
+  opacity: .3;
+}
+
+/* DEFAULT THEME */
+/* line 156, ../../../sass/partials/_layout.scss */
+.cm-s-default .cm-keyword {
+  color: #272f35;
+}
+
+/* line 157, ../../../sass/partials/_layout.scss */
+.cm-s-default .cm-atom {
+  color: #272f35;
+}
+
+/* line 158, ../../../sass/partials/_layout.scss */
+.cm-s-default .cm-number {
+  color: #272f35;
+}
+
+/* line 159, ../../../sass/partials/_layout.scss */
+.cm-s-default .cm-def {
+  color: #272f35;
+}
+
+/* line 160, ../../../sass/partials/_layout.scss */
+.cm-s-default .cm-variable {
+  color: #272f35;
+}
+
+/* line 161, ../../../sass/partials/_layout.scss */
+.cm-s-default .cm-variable-2 {
+  color: #272f35;
+}
+
+/* line 162, ../../../sass/partials/_layout.scss */
+.cm-s-default .cm-variable-3 {
+  color: #272f35;
+}
+
+/* line 163, ../../../sass/partials/_layout.scss */
+.cm-s-default .cm-property {
+  color: #272f35;
+}
+
+/* line 164, ../../../sass/partials/_layout.scss */
+.cm-s-default .cm-operator {
+  color: #272f35;
+}
+
+/* line 165, ../../../sass/partials/_layout.scss */
+.cm-s-default .cm-comment {
+  color: #272f35;
+}
+
+/* line 166, ../../../sass/partials/_layout.scss */
+.cm-s-default .cm-string {
+  color: #272f35;
+}
+
+/* line 167, ../../../sass/partials/_layout.scss */
+.cm-s-default .cm-string-2 {
+  color: #272f35;
+}
+
+/* line 168, ../../../sass/partials/_layout.scss */
+.cm-s-default .cm-meta {
+  color: #272f35;
+}
+
+/* line 169, ../../../sass/partials/_layout.scss */
+.cm-s-default .cm-qualifier {
+  color: #272f35;
+}
+
+/* line 170, ../../../sass/partials/_layout.scss */
+.cm-s-default .cm-builtin {
+  color: #272f35;
+}
+
+/* line 171, ../../../sass/partials/_layout.scss */
+.cm-s-default .cm-bracket {
+  color: #272f35;
+}
+
+/* line 172, ../../../sass/partials/_layout.scss */
+.cm-s-default .cm-tag {
+  color: #272f35;
+}
+
+/* line 173, ../../../sass/partials/_layout.scss */
+.cm-s-default .cm-attribute {
+  color: #272f35;
+}
+
+/* line 174, ../../../sass/partials/_layout.scss */
+.cm-s-default .cm-header {
+  color: #272f35;
+}
+
+/* line 179, ../../../sass/partials/_layout.scss */
+.cm-formatting-header {
+  font-size: 28px !important;
+  margin: 0 !important;
+  letter-spacing: 0 !important;
+  display: inline-block !important;
+  text-align: right;
+  position: relative !important;
+}
+
+/* line 202, ../../../sass/partials/_layout.scss */
+.cm-header-wrap {
+  text-indent: -4em;
+}
+
+/* line 205, ../../../sass/partials/_layout.scss */
+.cm-header {
+  position: relative;
+  -webkit-transition: all, 0.3s;
+  -moz-transition: all, 0.3s;
+  -o-transition: all, 0.3s;
+  transition: all, 0.3s;
+}
+
+/* line 210, ../../../sass/partials/_layout.scss */
+.cm-header1 {
+  margin: 2em 0 0.8em !important;
+  font-size: 30px;
+}
+@media only screen and (min-width: 972px) {
+  /* line 210, ../../../sass/partials/_layout.scss */
+  .cm-header1 {
+    margin: 2em 0 0.8em !important;
+    font-size: 42px;
+  }
+}
+
+/* line 220, ../../../sass/partials/_layout.scss */
+.cm-header2 {
+  margin: 1em 0 0.8em !important;
+  font-size: 20px;
+}
+@media only screen and (min-width: 972px) {
+  /* line 220, ../../../sass/partials/_layout.scss */
+  .cm-header2 {
+    font-size: 36px;
+  }
+}
+
+/* line 228, ../../../sass/partials/_layout.scss */
+.cm-header3 {
+  margin: 0.5em 0 0.8em !important;
+  font-size: 18px;
+}
+@media only screen and (min-width: 972px) {
+  /* line 228, ../../../sass/partials/_layout.scss */
+  .cm-header3 {
+    font-size: 28px;
+  }
+}
+
+/* line 236, ../../../sass/partials/_layout.scss */
+.cm-header4 {
+  margin: 1em 0 0.8em;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+@media only screen and (min-width: 972px) {
+  /* line 236, ../../../sass/partials/_layout.scss */
+  .cm-header4 {
+    font-size: 22px;
+  }
+}
+
+/* line 246, ../../../sass/partials/_layout.scss */
+.cm-header5 {
+  margin: 1em 0 0.8em;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+@media only screen and (min-width: 972px) {
+  /* line 246, ../../../sass/partials/_layout.scss */
+  .cm-header5 {
+    font-size: 18px;
+  }
+}
+
+/* line 256, ../../../sass/partials/_layout.scss */
+.cm-header6 {
+  margin: 1em 0 0.8em;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+@media only screen and (min-width: 972px) {
+  /* line 256, ../../../sass/partials/_layout.scss */
+  .cm-header6 {
+    font-size: 14px;
+  }
+}
+
+/* line 268, ../../../sass/partials/_layout.scss */
+.cm-formatting-link {
+  text-decoration: none !important;
+}
+
+/* line 274, ../../../sass/partials/_layout.scss */
+.cm-formatting-quote {
+  border: 0 !important;
+}
+
+/* line 277, ../../../sass/partials/_layout.scss */
+.cm-atom {
+  display: inline-block;
+  padding-left: 15%;
+  border-left: 1px solid rgba(39, 47, 53, 0.2);
+  font-size: 20px !important;
+  line-height: 24px !important;
+  color: #3d4952 !important;
+}
+
+/* line 291, ../../../sass/partials/_layout.scss */
+.cm-s-default .cm-quote {
+  color: #090;
+}
+
+/* line 292, ../../../sass/partials/_layout.scss */
+.cm-s-default .cm-hr {
+  color: #999;
+}
+
+/* line 293, ../../../sass/partials/_layout.scss */
+.cm-s-default .cm-link {
   color: black;
-  background-color: #ffe773;
 }
 
+/* line 295, ../../../sass/partials/_layout.scss */
+.cm-negative {
+  color: #d44;
+}
+
+/* line 296, ../../../sass/partials/_layout.scss */
+.cm-positive {
+  color: #292;
+}
+
+/* line 297, ../../../sass/partials/_layout.scss */
+.cm-header, .cm-strong {
+  font-weight: bold;
+}
+
+/* line 298, ../../../sass/partials/_layout.scss */
+.cm-em {
+  font-style: italic;
+}
+
+/* line 299, ../../../sass/partials/_layout.scss */
+.cm-link {
+  text-decoration: underline;
+}
+
+/* line 301, ../../../sass/partials/_layout.scss */
+.cm-s-default .cm-error {
+  color: #f00;
+}
+
+/* line 302, ../../../sass/partials/_layout.scss */
+.cm-invalidchar {
+  color: #f00;
+}
+
+/* line 304, ../../../sass/partials/_layout.scss */
+div.CodeMirror span.CodeMirror-matchingbracket {
+  color: #0f0;
+}
+
+/* line 305, ../../../sass/partials/_layout.scss */
+div.CodeMirror span.CodeMirror-nonmatchingbracket {
+  color: #f22;
+}
+
+/* line 306, ../../../sass/partials/_layout.scss */
+.CodeMirror-activeline-background {
+  background: #e8f2ff;
+}
+
+/* STOP */
+/* The rest of this file contains styles related to the mechanics of
+   the editor. You probably shouldn't touch them. */
+/* line 313, ../../../sass/partials/_layout.scss */
+.CodeMirror {
+  line-height: 1;
+  position: relative;
+  overflow: hidden;
+  background: rgba(231, 232, 226, 0.1);
+}
+
+/* line 320, ../../../sass/partials/_layout.scss */
+.CodeMirror-scroll {
+  /* 30px is the magic margin used to hide the element's real scrollbars */
+  /* See overflow: hidden in .CodeMirror */
+  margin-bottom: -30px;
+  margin-right: -30px;
+  padding-bottom: 30px;
+  padding-right: 30px;
+  height: 100%;
+  outline: none;
+  /* Prevent dragging from highlighting the element */
+  position: relative;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+@media only screen and (max-width: 640px) {
+  /* line 320, ../../../sass/partials/_layout.scss */
+  .CodeMirror-scroll {
+    padding-right: 0px;
+  }
+}
+
+/* line 334, ../../../sass/partials/_layout.scss */
+.CodeMirror-sizer {
+  position: relative;
+  height: 100%;
+}
+/* line 337, ../../../sass/partials/_layout.scss */
+.CodeMirror-sizer div:first-child {
+  height: 100%;
+}
+
+/* The fake, visible scrollbars. Used to force redraw during scrolling
+   before actuall scrolling happens, thus preventing shaking and
+   flickering artifacts. */
+/* line 345, ../../../sass/partials/_layout.scss */
+.CodeMirror-vscrollbar, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler {
+  position: absolute;
+  z-index: 6;
+  display: none;
+}
+
+/* line 350, ../../../sass/partials/_layout.scss */
+.CodeMirror-vscrollbar {
+  right: 0;
+  top: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+/* line 355, ../../../sass/partials/_layout.scss */
+.CodeMirror-hscrollbar {
+  bottom: 0;
+  left: 0;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+
+/* line 360, ../../../sass/partials/_layout.scss */
+.CodeMirror-scrollbar-filler {
+  right: 0;
+  bottom: 0;
+}
+
+/* line 363, ../../../sass/partials/_layout.scss */
+.CodeMirror-gutter-filler {
+  left: 0;
+  bottom: 0;
+}
+
+/* line 367, ../../../sass/partials/_layout.scss */
+.CodeMirror-gutters {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-bottom: 30px;
+  z-index: 3;
+}
+
+/* line 372, ../../../sass/partials/_layout.scss */
+.CodeMirror-gutter {
+  white-space: normal;
+  height: 100%;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  padding-bottom: 30px;
+  margin-bottom: -32px;
+  display: inline-block;
+  /* Hack to make IE7 behave */
+  *zoom: 1;
+  *display: inline;
+}
+
+/* line 384, ../../../sass/partials/_layout.scss */
+.CodeMirror-gutter-elt {
+  position: absolute;
+  cursor: default;
+  z-index: 4;
+}
+
+/* line 390, ../../../sass/partials/_layout.scss */
+.CodeMirror-lines {
+  cursor: text;
+  line-height: 38px;
+}
+
+/* line 394, ../../../sass/partials/_layout.scss */
+.CodeMirror pre {
+  /* Reset some styles that the rest of the page might have set */
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  border-width: 0;
+  background: transparent;
+  margin: 0;
+  white-space: pre;
+  word-wrap: normal;
+  color: inherit;
+  z-index: 2;
+  position: relative;
+  overflow: visible;
+}
+
+/* line 410, ../../../sass/partials/_layout.scss */
+.CodeMirror-wrap pre {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  word-break: normal;
+}
+
+/* line 416, ../../../sass/partials/_layout.scss */
+.CodeMirror-code pre {
+  border-right: 30px solid transparent;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+/* line 422, ../../../sass/partials/_layout.scss */
+.CodeMirror-wrap .CodeMirror-code pre {
+  border-right: none;
+  width: auto;
+}
+
+/* line 426, ../../../sass/partials/_layout.scss */
+.CodeMirror-linebackground {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+/* line 432, ../../../sass/partials/_layout.scss */
+.CodeMirror-linewidget {
+  position: relative;
+  z-index: 2;
+  overflow: auto;
+}
+
+/* line 440, ../../../sass/partials/_layout.scss */
+.CodeMirror-wrap .CodeMirror-scroll {
+  overflow-x: hidden;
+}
+
+/* line 444, ../../../sass/partials/_layout.scss */
+.CodeMirror-measure {
+  position: absolute;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+/* line 451, ../../../sass/partials/_layout.scss */
+.CodeMirror-measure pre {
+  position: static;
+}
+
+/* line 453, ../../../sass/partials/_layout.scss */
+.CodeMirror div.CodeMirror-cursor {
+  position: absolute;
+  visibility: hidden;
+  border-right: none;
+  width: 0;
+}
+
+/* line 459, ../../../sass/partials/_layout.scss */
+.CodeMirror-focused div.CodeMirror-cursor {
+  visibility: visible;
+}
+
+/* line 463, ../../../sass/partials/_layout.scss */
+.CodeMirror-selected {
+  background: #d9d9d9;
+}
+
+/* line 464, ../../../sass/partials/_layout.scss */
+.CodeMirror-focused .CodeMirror-selected {
+  background: #d7d4f0;
+}
+
+/* line 466, ../../../sass/partials/_layout.scss */
+.cm-searching {
+  background: #ffa;
+  background: rgba(255, 255, 0, 0.4);
+}
+
+/* IE7 hack to prevent it from returning funny offsetTops on the spans */
+/* line 472, ../../../sass/partials/_layout.scss */
+.CodeMirror span {
+  *vertical-align: text-bottom;
+}
+
+@media print {
+  /* Hide the cursor when printing */
+  /* line 476, ../../../sass/partials/_layout.scss */
+  .CodeMirror div.CodeMirror-cursor {
+    visibility: hidden;
+  }
+}
+/* line 1, ../../../sass/partials/_type.scss */
+body {
+  font-size: 16pz;
+}
+
+/* line 5, ../../../sass/partials/_type.scss */
 h2 {
-  font-size: 50px;
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 15px;
 }
 
-p {
+/* line 10, ../../../sass/partials/_type.scss */
+a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #272f35;
+  font-weight: bold;
+}
+
+/* line 16, ../../../sass/partials/_type.scss */
+ul, ol {
+  margin: 20px 0;
+}
+/* line 18, ../../../sass/partials/_type.scss */
+ul li, ol li {
+  list-style-type: disc;
+  margin-left: 30px;
+}
+
+/* line 23, ../../../sass/partials/_type.scss */
+strong {
+  font-weight: bold;
+}
+
+/* line 26, ../../../sass/partials/_type.scss */
+em {
+  font-style: italic;
+}
+
+/* line 30, ../../../sass/partials/_type.scss */
+blockquote {
+  background: rgba(0, 0, 0, 0.03);
+  padding: 25px;
+}
+/* line 33, ../../../sass/partials/_type.scss */
+blockquote span {
+  opacity: 0.3;
+}
+/* line 36, ../../../sass/partials/_type.scss */
+blockquote h1 {
+  font-weight: bold;
+  font-size: 30px;
+}
+/* line 40, ../../../sass/partials/_type.scss */
+blockquote h2 {
   font-size: 24px;
+}
+
+/*
+
+Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
+
+*/
+/* line 61, ../../../sass/partials/_type.scss */
+pre code,
+pre .subst,
+pre .tag .title,
+pre .lisp .title,
+pre .clojure .built_in,
+pre .nginx .title {
+  color: #272f35;
+}
+
+/* line 92, ../../../sass/partials/_type.scss */
+pre .string,
+pre .title,
+pre .constant,
+pre .parent,
+pre .tag .value,
+pre .rules .value,
+pre .rules .value .number,
+pre .preprocessor,
+pre .pragma,
+pre .haml .symbol,
+pre .ruby .symbol,
+pre .ruby .symbol .string,
+pre .aggregate,
+pre .template_tag,
+pre .django .variable,
+pre .smalltalk .class,
+pre .addition,
+pre .flow,
+pre .stream,
+pre .bash .variable,
+pre .apache .tag,
+pre .apache .cbracket,
+pre .tex .command,
+pre .tex .special,
+pre .erlang_repl .function_or_atom,
+pre .asciidoc .header,
+pre .markdown .header,
+pre .coffeescript .attribute {
+  color: #272f35;
+}
+
+/* line 103, ../../../sass/partials/_type.scss */
+pre .smartquote,
+pre .comment,
+pre .annotation,
+pre .template_comment,
+pre .diff .header,
+pre .chunk,
+pre .asciidoc .blockquote,
+pre .markdown .blockquote {
+  color: #272f35;
+}
+
+/* line 121, ../../../sass/partials/_type.scss */
+pre .number,
+pre .date,
+pre .regexp,
+pre .literal,
+pre .hexcolor,
+pre .smalltalk .symbol,
+pre .smalltalk .char,
+pre .go .constant,
+pre .change,
+pre .lasso .variable,
+pre .makefile .variable,
+pre .asciidoc .bullet,
+pre .markdown .bullet,
+pre .asciidoc .link_url,
+pre .markdown .link_url {
+  color: #272f35;
+}
+
+/* line 153, ../../../sass/partials/_type.scss */
+pre .label,
+pre .javadoc,
+pre .ruby .string,
+pre .decorator,
+pre .filter .argument,
+pre .localvars,
+pre .array,
+pre .attr_selector,
+pre .important,
+pre .pseudo,
+pre .pi,
+pre .haml .bullet,
+pre .doctype,
+pre .deletion,
+pre .envvar,
+pre .shebang,
+pre .apache .sqbracket,
+pre .nginx .built_in,
+pre .tex .formula,
+pre .erlang_repl .reserved,
+pre .prompt,
+pre .asciidoc .link_label,
+pre .markdown .link_label,
+pre .vhdl .attribute,
+pre .clojure .attribute,
+pre .asciidoc .attribute,
+pre .lasso .attribute,
+pre .coffeescript .property,
+pre .makefile .phony {
+  color: #272f35;
+}
+
+/* line 175, ../../../sass/partials/_type.scss */
+pre .keyword,
+pre .id,
+pre .title,
+pre .built_in,
+pre .aggregate,
+pre .css .tag,
+pre .javadoctag,
+pre .phpdoc,
+pre .yardoctag,
+pre .smalltalk .class,
+pre .winutils,
+pre .bash .variable,
+pre .apache .tag,
+pre .go .typename,
+pre .tex .command,
+pre .asciidoc .strong,
+pre .markdown .strong,
+pre .request,
+pre .status {
+  font-weight: bold;
+}
+
+/* line 180, ../../../sass/partials/_type.scss */
+pre .asciidoc .emphasis,
+pre .markdown .emphasis {
+  font-style: italic;
+}
+
+/* line 184, ../../../sass/partials/_type.scss */
+pre .nginx .built_in {
+  font-weight: normal;
+}
+
+/* line 195, ../../../sass/partials/_type.scss */
+pre .coffeescript .javascript,
+pre .javascript .xml,
+pre .lasso .markup,
+pre .tex .formula,
+pre .xml .javascript,
+pre .xml .vbscript,
+pre .xml .css,
+pre .xml .cdata {
+  opacity: 0.5;
+}
+
+/* line 1, ../../../sass/partials/_sidebar.scss */
+.border {
+  overflow: visible;
+  position: fixed;
+  height: 100%;
+  float: left;
+  background: #1e2124;
+  z-index: 2;
+  -webkit-transition: all, 0.3s;
+  -moz-transition: all, 0.3s;
+  -o-transition: all, 0.3s;
+  transition: all, 0.3s;
+}
+@media only screen and (min-width: 641px) and (max-width: 971px) {
+  /* line 1, ../../../sass/partials/_sidebar.scss */
+  .border {
+    width: 5%;
+  }
+}
+@media only screen and (min-width: 972px) {
+  /* line 1, ../../../sass/partials/_sidebar.scss */
+  .border {
+    width: 3%;
+  }
+}
+/* line 22, ../../../sass/partials/_sidebar.scss */
+.border ul {
+  position: absolute;
+  bottom: 1em;
+  width: 100%;
+}
+/* line 27, ../../../sass/partials/_sidebar.scss */
+.border li {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+/* line 33, ../../../sass/partials/_sidebar.scss */
+.border .clear a {
+  font-size: 18px;
+}
+/* line 35, ../../../sass/partials/_sidebar.scss */
+.border .clear a em {
+  width: 190px;
+  font-weight: normal;
+}
+/* line 41, ../../../sass/partials/_sidebar.scss */
+.border .info a {
+  font-size: 14px;
+}
+/* line 43, ../../../sass/partials/_sidebar.scss */
+.border .info a em {
+  width: 195px;
+}
+/* line 47, ../../../sass/partials/_sidebar.scss */
+.border a {
+  position: relative;
+  color: white;
+  text-decoration: none;
+  text-align: left;
+  display: block;
+  margin: 0 auto;
+  clear: both;
+  padding: 5px 10px;
+  overflow: visible !important;
+  text-align: center;
+  overflow: hidden;
+  *zoom: 1;
+  -webkit-transition: all, 0.3s;
+  -moz-transition: all, 0.3s;
+  -o-transition: all, 0.3s;
+  transition: all, 0.3s;
+}
+/* line 60, ../../../sass/partials/_sidebar.scss */
+.border a:hover {
+  background: #272f35;
+}
+/* line 64, ../../../sass/partials/_sidebar.scss */
+.border a span {
+  display: block;
+  width: 14px;
+  height: 25px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 5;
+}
+/* line 73, ../../../sass/partials/_sidebar.scss */
+.border a em {
+  font-style: normal;
+  margin: 0 auto;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 5px 5px 5px 50px;
+  font-size: 16px;
+  z-index: 4;
+  opacity: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all, 0.3s;
+  -moz-transition: all, 0.3s;
+  -o-transition: all, 0.3s;
+  transition: all, 0.3s;
+}
+@media only screen and (min-width: 641px) and (max-width: 971px) {
+  /* line 73, ../../../sass/partials/_sidebar.scss */
+  .border a em {
+    left: 30px;
+  }
+}
+/* line 93, ../../../sass/partials/_sidebar.scss */
+.border a:hover em {
+  display: block;
+  background: #272f35;
+  opacity: 1;
+}
+
+/**
+ * CSS Modal
+ * Modal as reusable module
+ * http://drublic.github.com/css-modal
+ *
+ * @author Hans Christian Reinl - @drublic
+ * @version 1.0.4
+ *
+ * Usage:
+ *    selector {
+ *        @extend %modal;
+ *    }
+ */
+/*
+ * Configuration
+ */
+/* line 26, ../../../sass/partials/_lightbox.scss */
+html {
+  overflow-y: scroll;
+}
+
+/* line 30, ../../../sass/partials/_lightbox.scss */
+.has-overlay {
+  overflow: hidden;
+}
+/* line 33, ../../../sass/partials/_lightbox.scss */
+.has-overlay > body {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+/* line 39, ../../../sass/partials/_lightbox.scss */
+.semantic-content {
+  -webkit-transform: translate(0, 100%);
+  -moz-transform: translate(0, 100%);
+  -o-transform: translate(0, 100%);
+  -ms-transform: translate(0, 100%);
+  transform: translate(0, 100%);
+  -webkit-transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  opacity: 0;
+  color: #222;
+  line-height: 1.3;
+  display: none\9;
+}
+/* line 63, ../../../sass/partials/_lightbox.scss */
+.semantic-content:target {
+  -webkit-transform: translate(0, 0);
+  -moz-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+  opacity: 1;
+}
+/* line 77, ../../../sass/partials/_lightbox.scss */
+.is-active.semantic-content {
+  display: block\9;
+}
+/* line 82, ../../../sass/partials/_lightbox.scss */
+.semantic-content:target {
+  display: block\9;
+}
+/* line 88, ../../../sass/partials/_lightbox.scss */
+.semantic-content .modal-inner {
+  position: absolute;
+  top: 150px;
+  left: 50%;
+  z-index: 20;
+  margin-left: -325px;
+  width: 650px;
+  overflow-x: hidden;
+  background: #fff;
+}
+/* line 105, ../../../sass/partials/_lightbox.scss */
+.semantic-content .modal-inner > img,
+.semantic-content .modal-inner > video,
+.semantic-content .modal-inner > iframe {
+  width: 100%;
+  height: auto;
+  min-height: 300px;
+}
+/* line 111, ../../../sass/partials/_lightbox.scss */
+.semantic-content .modal-inner > img {
+  width: auto;
+  max-width: 100%;
+}
+/* line 118, ../../../sass/partials/_lightbox.scss */
+.semantic-content header {
+  border-bottom: 1px solid #dddddd;
+  padding: 0 1.2em;
+}
+/* line 122, ../../../sass/partials/_lightbox.scss */
+.semantic-content header > h2 {
+  margin: 0.5em 0;
+}
+/* line 129, ../../../sass/partials/_lightbox.scss */
+.semantic-content .modal-content {
+  max-height: 400px;
+  max-height: 70vh;
+  border-bottom: 1px solid #dddddd;
+  padding: 2em 5%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+/* line 137, ../../../sass/partials/_lightbox.scss */
+.semantic-content .modal-content > * {
+  max-width: 100%;
+}
+/* line 144, ../../../sass/partials/_lightbox.scss */
+.semantic-content footer {
+  padding: 1em 5% 1em;
+  background: #f0f0f0;
+}
+/* line 151, ../../../sass/partials/_lightbox.scss */
+.semantic-content .modal-close {
+  display: block;
+  text-indent: -100px;
+  overflow: hidden;
+  font-size: 22px;
+}
+/* line 158, ../../../sass/partials/_lightbox.scss */
+.semantic-content .modal-close:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.8);
+}
+/* line 173, ../../../sass/partials/_lightbox.scss */
+.semantic-content .modal-close:after {
+  content: '\00d7';
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  z-index: 20;
+  margin-left: 285px;
+  color: #fff;
+  padding: 2px 8px;
+  font-size: 1.2em;
+  text-decoration: none;
+  text-indent: 0;
+}
+@media screen and (max-width: 690px) {
+  /* line 197, ../../../sass/partials/_lightbox.scss */
+  .semantic-content .modal-inner {
+    width: auto;
+    left: 20px;
+    right: 20px;
+    margin-left: 0;
+  }
+  /* line 204, ../../../sass/partials/_lightbox.scss */
+  .semantic-content .modal-close {
+    left: auto;
+    right: 33px;
+    margin-left: 0;
+  }
+  /* line 209, ../../../sass/partials/_lightbox.scss */
+  .semantic-content .modal-close:after {
+    margin-left: 40%;
+  }
+}
+@media screen and (max-width: 30em) {
+  /* line 39, ../../../sass/partials/_lightbox.scss */
+  .semantic-content {
+    -webkit-transform: translate(0, 400px);
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    -webkit-transition: -webkit-transform .25s ease-in-out, opacity 1ms .25s;
+    -moz-transition: -moz-transform .25s ease-in-out, opacity 1ms .25s;
+    -o-transition: -o-transform .25s ease-in-out, opacity 1ms .25s;
+    -ms-transition: -ms-transform .25s ease-in-out, opacity 1ms .25s;
+    transition: transform .25s ease-in-out, opacity 1ms .25s;
+    display: block;
+    height: 100%;
+    bottom: auto;
+  }
+  /* line 231, ../../../sass/partials/_lightbox.scss */
+  .semantic-content:target {
+    -webkit-transition: -webkit-transform .25s ease-in-out;
+    -moz-transition: -moz-transform .25s ease-in-out;
+    -o-transition: -o-transform .25s ease-in-out;
+    -ms-transition: -ms-transform .25s ease-in-out;
+    transition: transform .25s ease-in-out;
+  }
+  /* line 239, ../../../sass/partials/_lightbox.scss */
+  .semantic-content:before {
+    background-color: #1e2124;
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 30;
+    height: 3em;
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  }
+  /* line 253, ../../../sass/partials/_lightbox.scss */
+  .semantic-content .modal-inner {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-top: 3em;
+    height: 100%;
+    overflow: scroll;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  /* line 268, ../../../sass/partials/_lightbox.scss */
+  .semantic-content .modal-content {
+    max-height: none;
+  }
+  /* line 272, ../../../sass/partials/_lightbox.scss */
+  .semantic-content .modal-close {
+    right: auto;
+    text-decoration: none;
+  }
+  /* line 276, ../../../sass/partials/_lightbox.scss */
+  .semantic-content .modal-close:before {
+    display: none;
+  }
+  /* line 280, ../../../sass/partials/_lightbox.scss */
+  .semantic-content .modal-close:after {
+    content: attr(data-close);
+    top: 0.4em;
+    left: 1em;
+    z-index: 40;
+    margin-left: 0;
+    font-size: 1em;
+    padding: 0.5em 1em;
+  }
+}
+@media screen and (max-height: 46em) and (min-width: 30em) {
+  /* line 294, ../../../sass/partials/_lightbox.scss */
+  .semantic-content .modal-content {
+    max-height: 340px;
+    max-height: 50vh;
+  }
+}
+@media screen and (max-height: 36em) and (min-width: 30em) {
+  /* line 301, ../../../sass/partials/_lightbox.scss */
+  .semantic-content .modal-content {
+    max-height: 265px;
+    max-height: 40vh;
+  }
+}
+
+@media screen and (min-width: 30em) {
+  /* line 310, ../../../sass/partials/_lightbox.scss */
+  .semantic-content {
+    -webkit-transition: opacity 0.4s;
+    -o-transition: opacity 0.4s;
+    transition: opacity 0.4s;
+  }
+}
+
+/* line 326, ../../../sass/partials/_lightbox.scss */
+.modal {
+  font-size: 16px;
+}
+/* line 329, ../../../sass/partials/_lightbox.scss */
+.modal h2 {
+  font-weight: bold;
+  font-size: 24px;
+}
+/* line 333, ../../../sass/partials/_lightbox.scss */
+.modal a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #272f35;
+}
+/* line 342, ../../../sass/partials/_lightbox.scss */
+.modal li {
+  margin-bottom: 5px;
+}
+
+/* line 346, ../../../sass/partials/_lightbox.scss */
+.modal.initial {
+  -webkit-transform: translate(0, 0);
+  -moz-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+/* line 359, ../../../sass/partials/_lightbox.scss */
+.modal footer .clear-cancel {
+  text-align: right;
+  float: right;
 }
