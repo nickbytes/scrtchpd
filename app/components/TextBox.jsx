@@ -5,24 +5,38 @@ var TextBox = React.createClass({
 	getInitialState: function() {
     return {
       text: "",
-      code: "// Code"
+      code: "Write something"
     };
   },
   updateCode: function(newCode) {
         this.setState({
             code: newCode
         });
+        console.log('Change');
     },
   handleChange: function(event) {
     this.setState({ text: event.target.value });
+
   },
   render: function() {
   	var options = {
-	    // lineNumbers: true
+  		mode: {
+      name: "markdown",
+      id: "text-editor",
+      highlightFormatting: true
+	    },
+	    lineNumbers: false,
+	    lineWrapping: true,
+	    autofocus: true,
+	    extraKeys: {"Enter": "newlineAndIndentContinueMarkdownList"},
     };
     return (
     	<div>
-	    	<Codemirror value={this.state.code} onChange={this.updateCode} options={options} />
+    	<section className="writer">
+	    	<Codemirror className="text-editor" id="text-editor" value={this.state.code} onChange={this.updateCode} options={options} />
+    	</section>
+
+	    	--- 
 	      <section className="writer">
 	      {this.state.text}
 	      <textarea className="form-control"

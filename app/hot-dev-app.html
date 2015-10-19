@@ -56,7 +56,7 @@ function codeEditor(){
 
 
   // Waiting on the issue to format these individually: https://github.com/marijnh/CodeMirror/issues/1919
-  var editor = CodeMirror.fromTextArea(document.getElementById("text-editor"), {
+  var editor = CodeMirror.fromTextArea(document.getElementsByClassName("#writer .uniform"), {
     mode: {
       name: "markdown",
       highlightFormatting: true
@@ -72,12 +72,16 @@ function codeEditor(){
     $('.clear-yes').on('click', function(){
       editor.setValue("");
       editor.clearHistory();
-      $("#text-editor").focus();
+      // Original: 
+      // $("#text-editor").focus();
+      // React: 
+      $("#writer textarea").focus();
       console.log('clear!');
     });
     editor.on("keyup", function() {
+
       editor.save();
-      // console.log('saved to textarea');
+      console.log('saved to textarea');
 
       // Add wrapper elements
 
@@ -88,7 +92,10 @@ function codeEditor(){
     });
 
     $('.save').click(function(){
-      var existingText = $('#text-editor').val();
+    	// Original: 
+      // var existingText = $('#text-editor').val();
+      // React: 
+			var existingText = $('#writer textarea').val();      
       editor.setValue(existingText);
       // console.log(existingText);
     });
