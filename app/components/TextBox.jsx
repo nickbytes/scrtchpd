@@ -20,6 +20,11 @@ var TextBox = React.createClass({
     this.setState({counter: this.state.counter + 1});
     console.log('Updated counter:' + this.state.counter);
   },
+  clearText: function() {
+    this.setState({
+      code: ""
+    });
+  },
   handleChange: function(event) {
     this.setState({ text: event.target.value });
   },
@@ -41,6 +46,7 @@ var TextBox = React.createClass({
     	<section className="writer">
 	    	<Codemirror className="text-editor" id="text-editor" value={this.state.code} onChange={this.updateCode} options={options} />
     	</section>
+      <span onClick={this.clearText}>Clear</span>
       </div>
     );
   }
