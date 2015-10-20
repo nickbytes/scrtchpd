@@ -1297,3 +1297,13 @@ html {
   text-align: right;
   float: right;
 }
+
+
+.character-count {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 4px;
+  background: rgba(0,0,0,0.1);
+  
+}

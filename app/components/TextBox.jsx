@@ -44,7 +44,7 @@ var TextBox = React.createClass({
     };
     return (
     	<div>
-    	<span onClick={this.onClick}>{this.state.code.length}</span>
+    	<span className="character-count" onClick={this.onClick}>{this.state.code.length}</span>
     	<section className="writer">
 	    	<Codemirror className="text-editor" id="text-editor" value={this.state.code} onChange={this.updateCode} options={options} />
     	</section>
