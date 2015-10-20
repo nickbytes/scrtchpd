@@ -1,6 +1,8 @@
 import React from 'react';
 var Codemirror = require('react-codemirror');
-var LocalStorageMixin = require('react-localstorage');
+var LocalStorageMixin = require('react-localstorage')
+    require('../../node_modules/codemirror/mode/markdown/markdown.js')
+    require('../../node_modules/codemirror/mode/gfm/gfm.js');
 
 var TextBox = React.createClass({
 	displayName: 'TextBox',
@@ -31,10 +33,10 @@ var TextBox = React.createClass({
   render: function() {
   	var options = {
   		mode: {
-      name: "markdown",
-      id: "text-editor",
-      highlightFormatting: true
+        name: "gfm",
+        highlightFormatting: true
 	    },
+      // mode: "markdown",
 	    lineNumbers: false,
 	    lineWrapping: true,
 	    autofocus: true,
