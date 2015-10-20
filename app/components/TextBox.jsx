@@ -12,7 +12,9 @@ var TextBox = React.createClass({
         this.setState({
             code: newCode
         });
+        localStorage.state = JSON.stringify(this.state);
         console.log('Change');
+        console.log(this.state);
     },
   handleChange: function(event) {
     this.setState({ text: event.target.value });
