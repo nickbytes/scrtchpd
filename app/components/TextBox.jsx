@@ -1,11 +1,15 @@
 import React from 'react';
 var Codemirror = require('react-codemirror');
+var LocalStorageMixin = require('react-localstorage');
 
 var TextBox = React.createClass({
+	displayName: 'TextBox',
+  mixins: [LocalStorageMixin],
 	getInitialState: function() {
     return {
       text: "",
-      code: "Write something"
+      code: "Write something",
+      counter: 0
     };
   },
   updateCode: function(newCode) {
@@ -13,6 +17,7 @@ var TextBox = React.createClass({
             code: newCode
         });
         localStorage.state = JSON.stringify(this.state);
+        this.setState({counter: this.state.counter + 1});
         console.log('Change');
         console.log(this.state);
     },
@@ -34,6 +39,7 @@ var TextBox = React.createClass({
     };
     return (
     	<div>
+    	<span onClick={this.onClick}>{this.state.counter}</span>
     	<section className="writer">
 	    	<Codemirror className="text-editor" id="text-editor" value={this.state.code} onChange={this.updateCode} options={options} />
     	</section>
