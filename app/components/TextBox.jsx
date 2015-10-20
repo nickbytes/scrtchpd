@@ -11,19 +11,17 @@ var TextBox = React.createClass({
       code: "Write something",
       counter: 0
     };
+    console.log('initial counter:' + this.state.counter);
   },
   updateCode: function(newCode) {
-        this.setState({
-            code: newCode
-        });
-        localStorage.state = JSON.stringify(this.state);
-        this.setState({counter: this.state.counter + 1});
-        console.log('Change');
-        console.log(this.state);
-    },
+    this.setState({
+        code: newCode
+    });
+    this.setState({counter: this.state.counter + 1});
+    console.log('Updated counter:' + this.state.counter);
+  },
   handleChange: function(event) {
     this.setState({ text: event.target.value });
-
   },
   render: function() {
   	var options = {
@@ -43,19 +41,6 @@ var TextBox = React.createClass({
     	<section className="writer">
 	    	<Codemirror className="text-editor" id="text-editor" value={this.state.code} onChange={this.updateCode} options={options} />
     	</section>
-
-	    	--- 
-	      <section className="writer">
-	      {this.state.text}
-	      <textarea className="form-control"
-	                  onChange={this.handleChange}>
-	        </textarea>
-	        <form>
-	          <textarea id="text-editor" name="editor">
-	          </textarea>
-	        </form>
-	        <div id="preview"> </div>
-	      </section>
       </div>
     );
   }
