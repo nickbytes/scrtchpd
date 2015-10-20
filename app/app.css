@@ -2,7 +2,6 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* line 17, ../../../../../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -24,51 +23,42 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
 
 /* apply a natural box layout model to all elements */
-/* line 14, ../../../sass/partials/_defaults.scss */
 *, *:before, *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -76,31 +66,26 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 
 /* apply a natural box layout model to all elements */
-/* line 14, ../../../sass/partials/_defaults.scss */
 *, *:before, *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 2, ../../../sass/partials/_layout.scss */
 * {
   margin: 0;
   padding: 0;
 }
 
-/* line 3, ../../../sass/partials/_layout.scss */
 body {
   background: rgba(231, 232, 226, 0.5);
   font: normal 24px/28px "pt-sans", Georgia, "Times New Roman", serif;
 }
 
-/* line 7, ../../../sass/partials/_layout.scss */
 html, body, form, #preview {
   height: 100%;
 }
 
-/* line 10, ../../../sass/partials/_layout.scss */
 textarea, #preview, .CodeMirror {
   background: #fff;
   color: #333;
@@ -113,25 +98,21 @@ textarea, #preview, .CodeMirror {
   box-sizing: border-box;
 }
 
-/* line 21, ../../../sass/partials/_layout.scss */
 #preview {
   display: none;
 }
 
-/* line 24, ../../../sass/partials/_layout.scss */
 textarea:focus {
   outline: 0;
   outline: none;
 }
 
-/* line 28, ../../../sass/partials/_layout.scss */
 textarea {
-  opacity: 0.1;
+  opacity: 0;
   position: relative;
   z-index: 2;
 }
 
-/* line 35, ../../../sass/partials/_layout.scss */
 .sidebar {
   float: left;
   width: 29%;
@@ -139,7 +120,6 @@ textarea {
   display: none;
 }
 
-/* line 43, ../../../sass/partials/_layout.scss */
 .writer {
   width: 100%;
   height: 100%;
@@ -149,24 +129,62 @@ textarea {
   -moz-transition: all, 0.3s;
   -o-transition: all, 0.3s;
   transition: all, 0.3s;
+  -webkit-animation: fadein 1s;
+  /* Safari and Chrome */
+  -moz-animation: fadein 1s;
+  /* Firefox */
+  -ms-animation: fadein 1s;
+  /* Internet Explorer */
+  -o-animation: fadein 1s;
+  /* Opera */
+  animation: fadein 1s;
 }
 @media only screen and (min-width: 641px) and (max-width: 971px) {
-  /* line 43, ../../../sass/partials/_layout.scss */
   .writer {
     width: 95%;
     float: right;
   }
 }
 @media only screen and (min-width: 972px) {
-  /* line 43, ../../../sass/partials/_layout.scss */
   .writer {
     width: 97%;
     float: right;
   }
 }
 
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Firefox */
+@-moz-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Safari and Chrome */
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 /* BASICS */
-/* line 64, ../../../sass/partials/_layout.scss */
 .CodeMirror {
   /* Set height, width, borders, and global font properties here */
   /* font-family: monospace; */
@@ -174,9 +192,12 @@ textarea {
   height: 100%;
   padding: 0em 5% 0em 0;
   color: #272f35;
+  -webkit-transition: all, 0.3s;
+  -moz-transition: all, 0.3s;
+  -o-transition: all, 0.3s;
+  transition: all, 0.3s;
 }
 
-/* line 74, ../../../sass/partials/_layout.scss */
 .CodeMirror-scroll {
   /* Set scrolling behaviour here */
   overflow: auto;
@@ -186,7 +207,6 @@ textarea {
 }
 
 /* PADDING */
-/* line 82, ../../../sass/partials/_layout.scss */
 .CodeMirror-lines {
   padding: 2em 0;
   /* Vertical padding around content */
@@ -199,14 +219,12 @@ textarea {
   transition: all, 0.3s;
 }
 @media only screen and (min-width: 972px) {
-  /* line 82, ../../../sass/partials/_layout.scss */
   .CodeMirror-lines {
     width: 90%;
     max-width: 1100px;
   }
 }
 
-/* line 94, ../../../sass/partials/_layout.scss */
 .CodeMirror pre {
   padding: 0 5%;
   /* Horizontal padding of content */
@@ -219,35 +237,30 @@ textarea {
   transition: all, 0.3s;
 }
 @media only screen and (min-width: 641px) and (max-width: 971px) {
-  /* line 94, ../../../sass/partials/_layout.scss */
   .CodeMirror pre {
     padding: 0 15%;
     font: normal 18px/24px "pt-sans", Georgia, "Times New Roman", serif;
   }
 }
 @media only screen and (min-width: 972px) {
-  /* line 94, ../../../sass/partials/_layout.scss */
   .CodeMirror pre {
     padding: 0 10%;
     font: normal 20px/28px "pt-sans", Georgia, "Times New Roman", serif;
   }
 }
 
-/* line 110, ../../../sass/partials/_layout.scss */
 .CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler {
   background-color: white;
   /* The little square between H and V scrollbars */
 }
 
 /* GUTTER */
-/* line 116, ../../../sass/partials/_layout.scss */
 .CodeMirror-gutters {
   border-right: 1px solid #ddd;
   background-color: #f7f7f7;
   white-space: nowrap;
 }
 
-/* line 122, ../../../sass/partials/_layout.scss */
 .CodeMirror-linenumber {
   padding: 0 3px 0 5px;
   min-width: 20px;
@@ -256,19 +269,16 @@ textarea {
 }
 
 /* CURSOR */
-/* line 131, ../../../sass/partials/_layout.scss */
 .CodeMirror div.CodeMirror-cursor {
   border-left: 1px solid black;
   z-index: 3;
 }
 
 /* Shown when moving in bi-directional text */
-/* line 136, ../../../sass/partials/_layout.scss */
 .CodeMirror div.CodeMirror-secondarycursor {
   border-left: 1px solid silver;
 }
 
-/* line 139, ../../../sass/partials/_layout.scss */
 .CodeMirror.cm-keymap-fat-cursor div.CodeMirror-cursor {
   width: auto;
   border: 0;
@@ -277,113 +287,91 @@ textarea {
 }
 
 /* Can style cursor different in overwrite (non-insert) mode */
-/* line 148, ../../../sass/partials/_layout.scss */
 .cm-tab {
   display: inline-block;
 }
 
-/* line 150, ../../../sass/partials/_layout.scss */
 .cm-s-default .cm-formatting {
   opacity: .3;
 }
 
 /* DEFAULT THEME */
-/* line 156, ../../../sass/partials/_layout.scss */
 .cm-s-default .cm-keyword {
   color: #272f35;
 }
 
-/* line 157, ../../../sass/partials/_layout.scss */
 .cm-s-default .cm-atom {
   color: #272f35;
 }
 
-/* line 158, ../../../sass/partials/_layout.scss */
 .cm-s-default .cm-number {
   color: #272f35;
 }
 
-/* line 159, ../../../sass/partials/_layout.scss */
 .cm-s-default .cm-def {
   color: #272f35;
 }
 
-/* line 160, ../../../sass/partials/_layout.scss */
 .cm-s-default .cm-variable {
   color: #272f35;
 }
 
-/* line 161, ../../../sass/partials/_layout.scss */
 .cm-s-default .cm-variable-2 {
   color: #272f35;
 }
 
-/* line 162, ../../../sass/partials/_layout.scss */
 .cm-s-default .cm-variable-3 {
   color: #272f35;
 }
 
-/* line 163, ../../../sass/partials/_layout.scss */
 .cm-s-default .cm-property {
   color: #272f35;
 }
 
-/* line 164, ../../../sass/partials/_layout.scss */
 .cm-s-default .cm-operator {
   color: #272f35;
 }
 
-/* line 165, ../../../sass/partials/_layout.scss */
 .cm-s-default .cm-comment {
   color: #272f35;
 }
 
-/* line 166, ../../../sass/partials/_layout.scss */
 .cm-s-default .cm-string {
   color: #272f35;
 }
 
-/* line 167, ../../../sass/partials/_layout.scss */
 .cm-s-default .cm-string-2 {
   color: #272f35;
 }
 
-/* line 168, ../../../sass/partials/_layout.scss */
 .cm-s-default .cm-meta {
   color: #272f35;
 }
 
-/* line 169, ../../../sass/partials/_layout.scss */
 .cm-s-default .cm-qualifier {
   color: #272f35;
 }
 
-/* line 170, ../../../sass/partials/_layout.scss */
 .cm-s-default .cm-builtin {
   color: #272f35;
 }
 
-/* line 171, ../../../sass/partials/_layout.scss */
 .cm-s-default .cm-bracket {
   color: #272f35;
 }
 
-/* line 172, ../../../sass/partials/_layout.scss */
 .cm-s-default .cm-tag {
   color: #272f35;
 }
 
-/* line 173, ../../../sass/partials/_layout.scss */
 .cm-s-default .cm-attribute {
   color: #272f35;
 }
 
-/* line 174, ../../../sass/partials/_layout.scss */
 .cm-s-default .cm-header {
   color: #272f35;
 }
 
-/* line 179, ../../../sass/partials/_layout.scss */
 .cm-formatting-header {
   font-size: 28px !important;
   margin: 0 !important;
@@ -393,12 +381,10 @@ textarea {
   position: relative !important;
 }
 
-/* line 202, ../../../sass/partials/_layout.scss */
 .cm-header-wrap {
   text-indent: -4em;
 }
 
-/* line 205, ../../../sass/partials/_layout.scss */
 .cm-header {
   position: relative;
   -webkit-transition: all, 0.3s;
@@ -407,96 +393,81 @@ textarea {
   transition: all, 0.3s;
 }
 
-/* line 210, ../../../sass/partials/_layout.scss */
-.cm-header1 {
+.cm-header1, .cm-header-1 {
   margin: 2em 0 0.8em !important;
   font-size: 30px;
 }
 @media only screen and (min-width: 972px) {
-  /* line 210, ../../../sass/partials/_layout.scss */
-  .cm-header1 {
+  .cm-header1, .cm-header-1 {
     margin: 2em 0 0.8em !important;
     font-size: 42px;
   }
 }
 
-/* line 220, ../../../sass/partials/_layout.scss */
-.cm-header2 {
+.cm-header2, .cm-header-2 {
   margin: 1em 0 0.8em !important;
   font-size: 20px;
 }
 @media only screen and (min-width: 972px) {
-  /* line 220, ../../../sass/partials/_layout.scss */
-  .cm-header2 {
+  .cm-header2, .cm-header-2 {
     font-size: 36px;
   }
 }
 
-/* line 228, ../../../sass/partials/_layout.scss */
-.cm-header3 {
+.cm-header3, .cm-header-3 {
   margin: 0.5em 0 0.8em !important;
   font-size: 18px;
 }
 @media only screen and (min-width: 972px) {
-  /* line 228, ../../../sass/partials/_layout.scss */
-  .cm-header3 {
+  .cm-header3, .cm-header-3 {
     font-size: 28px;
   }
 }
 
-/* line 236, ../../../sass/partials/_layout.scss */
-.cm-header4 {
+.cm-header4, .cm-header-4 {
   margin: 1em 0 0.8em;
   font-size: 16px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
 @media only screen and (min-width: 972px) {
-  /* line 236, ../../../sass/partials/_layout.scss */
-  .cm-header4 {
+  .cm-header4, .cm-header-4 {
     font-size: 22px;
   }
 }
 
-/* line 246, ../../../sass/partials/_layout.scss */
-.cm-header5 {
+.cm-header5, .cm-header-5 {
   margin: 1em 0 0.8em;
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
 @media only screen and (min-width: 972px) {
-  /* line 246, ../../../sass/partials/_layout.scss */
-  .cm-header5 {
+  .cm-header5, .cm-header-5 {
     font-size: 18px;
   }
 }
 
-/* line 256, ../../../sass/partials/_layout.scss */
-.cm-header6 {
+.cm-header6, .cm-header-6 {
   margin: 1em 0 0.8em;
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
 @media only screen and (min-width: 972px) {
-  /* line 256, ../../../sass/partials/_layout.scss */
-  .cm-header6 {
+  .cm-header6, .cm-header-6{
     font-size: 14px;
   }
 }
 
-/* line 268, ../../../sass/partials/_layout.scss */
 .cm-formatting-link {
   text-decoration: none !important;
 }
 
-/* line 274, ../../../sass/partials/_layout.scss */
 .cm-formatting-quote {
   border: 0 !important;
 }
 
-/* line 277, ../../../sass/partials/_layout.scss */
 .cm-atom {
   display: inline-block;
   padding-left: 15%;
@@ -506,67 +477,54 @@ textarea {
   color: #3d4952 !important;
 }
 
-/* line 291, ../../../sass/partials/_layout.scss */
 .cm-s-default .cm-quote {
   color: #090;
 }
 
-/* line 292, ../../../sass/partials/_layout.scss */
 .cm-s-default .cm-hr {
   color: #999;
 }
 
-/* line 293, ../../../sass/partials/_layout.scss */
 .cm-s-default .cm-link {
   color: black;
 }
 
-/* line 295, ../../../sass/partials/_layout.scss */
 .cm-negative {
   color: #d44;
 }
 
-/* line 296, ../../../sass/partials/_layout.scss */
 .cm-positive {
   color: #292;
 }
 
-/* line 297, ../../../sass/partials/_layout.scss */
 .cm-header, .cm-strong {
   font-weight: bold;
 }
 
-/* line 298, ../../../sass/partials/_layout.scss */
 .cm-em {
   font-style: italic;
 }
 
-/* line 299, ../../../sass/partials/_layout.scss */
 .cm-link {
   text-decoration: underline;
 }
 
-/* line 301, ../../../sass/partials/_layout.scss */
 .cm-s-default .cm-error {
   color: #f00;
 }
 
-/* line 302, ../../../sass/partials/_layout.scss */
 .cm-invalidchar {
   color: #f00;
 }
 
-/* line 304, ../../../sass/partials/_layout.scss */
 div.CodeMirror span.CodeMirror-matchingbracket {
   color: #0f0;
 }
 
-/* line 305, ../../../sass/partials/_layout.scss */
 div.CodeMirror span.CodeMirror-nonmatchingbracket {
   color: #f22;
 }
 
-/* line 306, ../../../sass/partials/_layout.scss */
 .CodeMirror-activeline-background {
   background: #e8f2ff;
 }
@@ -574,7 +532,6 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
 /* STOP */
 /* The rest of this file contains styles related to the mechanics of
    the editor. You probably shouldn't touch them. */
-/* line 313, ../../../sass/partials/_layout.scss */
 .CodeMirror {
   line-height: 1;
   position: relative;
@@ -582,7 +539,6 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   background: rgba(231, 232, 226, 0.1);
 }
 
-/* line 320, ../../../sass/partials/_layout.scss */
 .CodeMirror-scroll {
   /* 30px is the magic margin used to hide the element's real scrollbars */
   /* See overflow: hidden in .CodeMirror */
@@ -598,18 +554,15 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   box-sizing: content-box;
 }
 @media only screen and (max-width: 640px) {
-  /* line 320, ../../../sass/partials/_layout.scss */
   .CodeMirror-scroll {
     padding-right: 0px;
   }
 }
 
-/* line 334, ../../../sass/partials/_layout.scss */
 .CodeMirror-sizer {
   position: relative;
   height: 100%;
 }
-/* line 337, ../../../sass/partials/_layout.scss */
 .CodeMirror-sizer div:first-child {
   height: 100%;
 }
@@ -617,14 +570,12 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
 /* The fake, visible scrollbars. Used to force redraw during scrolling
    before actuall scrolling happens, thus preventing shaking and
    flickering artifacts. */
-/* line 345, ../../../sass/partials/_layout.scss */
 .CodeMirror-vscrollbar, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler {
   position: absolute;
   z-index: 6;
   display: none;
 }
 
-/* line 350, ../../../sass/partials/_layout.scss */
 .CodeMirror-vscrollbar {
   right: 0;
   top: 0;
@@ -632,7 +583,6 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   overflow-y: scroll;
 }
 
-/* line 355, ../../../sass/partials/_layout.scss */
 .CodeMirror-hscrollbar {
   bottom: 0;
   left: 0;
@@ -640,19 +590,16 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   overflow-x: scroll;
 }
 
-/* line 360, ../../../sass/partials/_layout.scss */
 .CodeMirror-scrollbar-filler {
   right: 0;
   bottom: 0;
 }
 
-/* line 363, ../../../sass/partials/_layout.scss */
 .CodeMirror-gutter-filler {
   left: 0;
   bottom: 0;
 }
 
-/* line 367, ../../../sass/partials/_layout.scss */
 .CodeMirror-gutters {
   position: absolute;
   left: 0;
@@ -661,7 +608,6 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   z-index: 3;
 }
 
-/* line 372, ../../../sass/partials/_layout.scss */
 .CodeMirror-gutter {
   white-space: normal;
   height: 100%;
@@ -675,20 +621,17 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   *display: inline;
 }
 
-/* line 384, ../../../sass/partials/_layout.scss */
 .CodeMirror-gutter-elt {
   position: absolute;
   cursor: default;
   z-index: 4;
 }
 
-/* line 390, ../../../sass/partials/_layout.scss */
 .CodeMirror-lines {
   cursor: text;
   line-height: 38px;
 }
 
-/* line 394, ../../../sass/partials/_layout.scss */
 .CodeMirror pre {
   /* Reset some styles that the rest of the page might have set */
   -moz-border-radius: 0;
@@ -705,14 +648,12 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   overflow: visible;
 }
 
-/* line 410, ../../../sass/partials/_layout.scss */
 .CodeMirror-wrap pre {
   word-wrap: break-word;
   white-space: pre-wrap;
   word-break: normal;
 }
 
-/* line 416, ../../../sass/partials/_layout.scss */
 .CodeMirror-code pre {
   border-right: 30px solid transparent;
   width: -webkit-fit-content;
@@ -720,13 +661,11 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   width: fit-content;
 }
 
-/* line 422, ../../../sass/partials/_layout.scss */
 .CodeMirror-wrap .CodeMirror-code pre {
   border-right: none;
   width: auto;
 }
 
-/* line 426, ../../../sass/partials/_layout.scss */
 .CodeMirror-linebackground {
   position: absolute;
   left: 0;
@@ -736,19 +675,16 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   z-index: 0;
 }
 
-/* line 432, ../../../sass/partials/_layout.scss */
 .CodeMirror-linewidget {
   position: relative;
   z-index: 2;
   overflow: auto;
 }
 
-/* line 440, ../../../sass/partials/_layout.scss */
 .CodeMirror-wrap .CodeMirror-scroll {
   overflow-x: hidden;
 }
 
-/* line 444, ../../../sass/partials/_layout.scss */
 .CodeMirror-measure {
   position: absolute;
   width: 100%;
@@ -757,12 +693,10 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   visibility: hidden;
 }
 
-/* line 451, ../../../sass/partials/_layout.scss */
 .CodeMirror-measure pre {
   position: static;
 }
 
-/* line 453, ../../../sass/partials/_layout.scss */
 .CodeMirror div.CodeMirror-cursor {
   position: absolute;
   visibility: hidden;
@@ -770,53 +704,44 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   width: 0;
 }
 
-/* line 459, ../../../sass/partials/_layout.scss */
 .CodeMirror-focused div.CodeMirror-cursor {
   visibility: visible;
 }
 
-/* line 463, ../../../sass/partials/_layout.scss */
 .CodeMirror-selected {
   background: #d9d9d9;
 }
 
-/* line 464, ../../../sass/partials/_layout.scss */
 .CodeMirror-focused .CodeMirror-selected {
   background: #d7d4f0;
 }
 
-/* line 466, ../../../sass/partials/_layout.scss */
 .cm-searching {
   background: #ffa;
   background: rgba(255, 255, 0, 0.4);
 }
 
 /* IE7 hack to prevent it from returning funny offsetTops on the spans */
-/* line 472, ../../../sass/partials/_layout.scss */
 .CodeMirror span {
   *vertical-align: text-bottom;
 }
 
 @media print {
   /* Hide the cursor when printing */
-  /* line 476, ../../../sass/partials/_layout.scss */
   .CodeMirror div.CodeMirror-cursor {
     visibility: hidden;
   }
 }
-/* line 1, ../../../sass/partials/_type.scss */
 body {
   font-size: 16pz;
 }
 
-/* line 5, ../../../sass/partials/_type.scss */
 h2 {
   font-weight: bold;
   font-size: 24px;
   margin-bottom: 15px;
 }
 
-/* line 10, ../../../sass/partials/_type.scss */
 a {
   text-decoration: none;
   font-size: 16px;
@@ -824,41 +749,33 @@ a {
   font-weight: bold;
 }
 
-/* line 16, ../../../sass/partials/_type.scss */
 ul, ol {
   margin: 20px 0;
 }
-/* line 18, ../../../sass/partials/_type.scss */
 ul li, ol li {
   list-style-type: disc;
   margin-left: 30px;
 }
 
-/* line 23, ../../../sass/partials/_type.scss */
 strong {
   font-weight: bold;
 }
 
-/* line 26, ../../../sass/partials/_type.scss */
 em {
   font-style: italic;
 }
 
-/* line 30, ../../../sass/partials/_type.scss */
 blockquote {
   background: rgba(0, 0, 0, 0.03);
   padding: 25px;
 }
-/* line 33, ../../../sass/partials/_type.scss */
 blockquote span {
   opacity: 0.3;
 }
-/* line 36, ../../../sass/partials/_type.scss */
 blockquote h1 {
   font-weight: bold;
   font-size: 30px;
 }
-/* line 40, ../../../sass/partials/_type.scss */
 blockquote h2 {
   font-size: 24px;
 }
@@ -868,7 +785,6 @@ blockquote h2 {
 Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
 
 */
-/* line 61, ../../../sass/partials/_type.scss */
 pre code,
 pre .subst,
 pre .tag .title,
@@ -878,7 +794,6 @@ pre .nginx .title {
   color: #272f35;
 }
 
-/* line 92, ../../../sass/partials/_type.scss */
 pre .string,
 pre .title,
 pre .constant,
@@ -910,7 +825,6 @@ pre .coffeescript .attribute {
   color: #272f35;
 }
 
-/* line 103, ../../../sass/partials/_type.scss */
 pre .smartquote,
 pre .comment,
 pre .annotation,
@@ -922,7 +836,6 @@ pre .markdown .blockquote {
   color: #272f35;
 }
 
-/* line 121, ../../../sass/partials/_type.scss */
 pre .number,
 pre .date,
 pre .regexp,
@@ -941,7 +854,6 @@ pre .markdown .link_url {
   color: #272f35;
 }
 
-/* line 153, ../../../sass/partials/_type.scss */
 pre .label,
 pre .javadoc,
 pre .ruby .string,
@@ -974,7 +886,6 @@ pre .makefile .phony {
   color: #272f35;
 }
 
-/* line 175, ../../../sass/partials/_type.scss */
 pre .keyword,
 pre .id,
 pre .title,
@@ -997,18 +908,15 @@ pre .status {
   font-weight: bold;
 }
 
-/* line 180, ../../../sass/partials/_type.scss */
 pre .asciidoc .emphasis,
 pre .markdown .emphasis {
   font-style: italic;
 }
 
-/* line 184, ../../../sass/partials/_type.scss */
 pre .nginx .built_in {
   font-weight: normal;
 }
 
-/* line 195, ../../../sass/partials/_type.scss */
 pre .coffeescript .javascript,
 pre .javascript .xml,
 pre .lasso .markup,
@@ -1020,7 +928,6 @@ pre .xml .cdata {
   opacity: 0.5;
 }
 
-/* line 1, ../../../sass/partials/_sidebar.scss */
 .border {
   overflow: visible;
   position: fixed;
@@ -1034,48 +941,39 @@ pre .xml .cdata {
   transition: all, 0.3s;
 }
 @media only screen and (min-width: 641px) and (max-width: 971px) {
-  /* line 1, ../../../sass/partials/_sidebar.scss */
   .border {
     width: 5%;
   }
 }
 @media only screen and (min-width: 972px) {
-  /* line 1, ../../../sass/partials/_sidebar.scss */
   .border {
     width: 3%;
   }
 }
-/* line 22, ../../../sass/partials/_sidebar.scss */
 .border ul {
   position: absolute;
   bottom: 1em;
   width: 100%;
 }
-/* line 27, ../../../sass/partials/_sidebar.scss */
 .border li {
   position: relative;
   margin: 0;
   padding: 0;
   list-style-type: none;
 }
-/* line 33, ../../../sass/partials/_sidebar.scss */
 .border .clear a {
   font-size: 18px;
 }
-/* line 35, ../../../sass/partials/_sidebar.scss */
 .border .clear a em {
   width: 190px;
   font-weight: normal;
 }
-/* line 41, ../../../sass/partials/_sidebar.scss */
 .border .info a {
   font-size: 14px;
 }
-/* line 43, ../../../sass/partials/_sidebar.scss */
 .border .info a em {
   width: 195px;
 }
-/* line 47, ../../../sass/partials/_sidebar.scss */
 .border a {
   position: relative;
   color: white;
@@ -1094,11 +992,9 @@ pre .xml .cdata {
   -o-transition: all, 0.3s;
   transition: all, 0.3s;
 }
-/* line 60, ../../../sass/partials/_sidebar.scss */
 .border a:hover {
   background: #272f35;
 }
-/* line 64, ../../../sass/partials/_sidebar.scss */
 .border a span {
   display: block;
   width: 14px;
@@ -1107,7 +1003,6 @@ pre .xml .cdata {
   position: relative;
   z-index: 5;
 }
-/* line 73, ../../../sass/partials/_sidebar.scss */
 .border a em {
   font-style: normal;
   margin: 0 auto;
@@ -1127,12 +1022,10 @@ pre .xml .cdata {
   transition: all, 0.3s;
 }
 @media only screen and (min-width: 641px) and (max-width: 971px) {
-  /* line 73, ../../../sass/partials/_sidebar.scss */
   .border a em {
     left: 30px;
   }
 }
-/* line 93, ../../../sass/partials/_sidebar.scss */
 .border a:hover em {
   display: block;
   background: #272f35;
@@ -1155,22 +1048,18 @@ pre .xml .cdata {
 /*
  * Configuration
  */
-/* line 26, ../../../sass/partials/_lightbox.scss */
 html {
   overflow-y: scroll;
 }
 
-/* line 30, ../../../sass/partials/_lightbox.scss */
 .has-overlay {
   overflow: hidden;
 }
-/* line 33, ../../../sass/partials/_lightbox.scss */
 .has-overlay > body {
   height: 100%;
   overflow-y: scroll;
 }
 
-/* line 39, ../../../sass/partials/_lightbox.scss */
 .semantic-content {
   -webkit-transform: translate(0, 100%);
   -moz-transform: translate(0, 100%);
@@ -1190,7 +1079,6 @@ html {
   line-height: 1.3;
   display: none\9;
 }
-/* line 63, ../../../sass/partials/_lightbox.scss */
 .semantic-content:target {
   -webkit-transform: translate(0, 0);
   -moz-transform: translate(0, 0);
@@ -1199,15 +1087,12 @@ html {
   transform: translate(0, 0);
   opacity: 1;
 }
-/* line 77, ../../../sass/partials/_lightbox.scss */
 .is-active.semantic-content {
   display: block\9;
 }
-/* line 82, ../../../sass/partials/_lightbox.scss */
 .semantic-content:target {
   display: block\9;
 }
-/* line 88, ../../../sass/partials/_lightbox.scss */
 .semantic-content .modal-inner {
   position: absolute;
   top: 150px;
@@ -1218,7 +1103,6 @@ html {
   overflow-x: hidden;
   background: #fff;
 }
-/* line 105, ../../../sass/partials/_lightbox.scss */
 .semantic-content .modal-inner > img,
 .semantic-content .modal-inner > video,
 .semantic-content .modal-inner > iframe {
@@ -1226,21 +1110,17 @@ html {
   height: auto;
   min-height: 300px;
 }
-/* line 111, ../../../sass/partials/_lightbox.scss */
 .semantic-content .modal-inner > img {
   width: auto;
   max-width: 100%;
 }
-/* line 118, ../../../sass/partials/_lightbox.scss */
 .semantic-content header {
   border-bottom: 1px solid #dddddd;
   padding: 0 1.2em;
 }
-/* line 122, ../../../sass/partials/_lightbox.scss */
 .semantic-content header > h2 {
   margin: 0.5em 0;
 }
-/* line 129, ../../../sass/partials/_lightbox.scss */
 .semantic-content .modal-content {
   max-height: 400px;
   max-height: 70vh;
@@ -1249,23 +1129,19 @@ html {
   overflow-x: hidden;
   overflow-y: auto;
 }
-/* line 137, ../../../sass/partials/_lightbox.scss */
 .semantic-content .modal-content > * {
   max-width: 100%;
 }
-/* line 144, ../../../sass/partials/_lightbox.scss */
 .semantic-content footer {
   padding: 1em 5% 1em;
   background: #f0f0f0;
 }
-/* line 151, ../../../sass/partials/_lightbox.scss */
 .semantic-content .modal-close {
   display: block;
   text-indent: -100px;
   overflow: hidden;
   font-size: 22px;
 }
-/* line 158, ../../../sass/partials/_lightbox.scss */
 .semantic-content .modal-close:before {
   content: '';
   position: absolute;
@@ -1276,7 +1152,6 @@ html {
   z-index: 10;
   background: rgba(0, 0, 0, 0.8);
 }
-/* line 173, ../../../sass/partials/_lightbox.scss */
 .semantic-content .modal-close:after {
   content: '\00d7';
   position: absolute;
@@ -1291,26 +1166,22 @@ html {
   text-indent: 0;
 }
 @media screen and (max-width: 690px) {
-  /* line 197, ../../../sass/partials/_lightbox.scss */
   .semantic-content .modal-inner {
     width: auto;
     left: 20px;
     right: 20px;
     margin-left: 0;
   }
-  /* line 204, ../../../sass/partials/_lightbox.scss */
   .semantic-content .modal-close {
     left: auto;
     right: 33px;
     margin-left: 0;
   }
-  /* line 209, ../../../sass/partials/_lightbox.scss */
   .semantic-content .modal-close:after {
     margin-left: 40%;
   }
 }
 @media screen and (max-width: 30em) {
-  /* line 39, ../../../sass/partials/_lightbox.scss */
   .semantic-content {
     -webkit-transform: translate(0, 400px);
     -webkit-transform: translate3d(0, 100%, 0);
@@ -1324,7 +1195,6 @@ html {
     height: 100%;
     bottom: auto;
   }
-  /* line 231, ../../../sass/partials/_lightbox.scss */
   .semantic-content:target {
     -webkit-transition: -webkit-transform .25s ease-in-out;
     -moz-transition: -moz-transform .25s ease-in-out;
@@ -1332,7 +1202,6 @@ html {
     -ms-transition: -ms-transform .25s ease-in-out;
     transition: transform .25s ease-in-out;
   }
-  /* line 239, ../../../sass/partials/_lightbox.scss */
   .semantic-content:before {
     background-color: #1e2124;
     content: '';
@@ -1345,7 +1214,6 @@ html {
     -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
   }
-  /* line 253, ../../../sass/partials/_lightbox.scss */
   .semantic-content .modal-inner {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -1359,20 +1227,16 @@ html {
     -webkit-box-shadow: none;
     box-shadow: none;
   }
-  /* line 268, ../../../sass/partials/_lightbox.scss */
   .semantic-content .modal-content {
     max-height: none;
   }
-  /* line 272, ../../../sass/partials/_lightbox.scss */
   .semantic-content .modal-close {
     right: auto;
     text-decoration: none;
   }
-  /* line 276, ../../../sass/partials/_lightbox.scss */
   .semantic-content .modal-close:before {
     display: none;
   }
-  /* line 280, ../../../sass/partials/_lightbox.scss */
   .semantic-content .modal-close:after {
     content: attr(data-close);
     top: 0.4em;
@@ -1384,14 +1248,12 @@ html {
   }
 }
 @media screen and (max-height: 46em) and (min-width: 30em) {
-  /* line 294, ../../../sass/partials/_lightbox.scss */
   .semantic-content .modal-content {
     max-height: 340px;
     max-height: 50vh;
   }
 }
 @media screen and (max-height: 36em) and (min-width: 30em) {
-  /* line 301, ../../../sass/partials/_lightbox.scss */
   .semantic-content .modal-content {
     max-height: 265px;
     max-height: 40vh;
@@ -1399,7 +1261,6 @@ html {
 }
 
 @media screen and (min-width: 30em) {
-  /* line 310, ../../../sass/partials/_lightbox.scss */
   .semantic-content {
     -webkit-transition: opacity 0.4s;
     -o-transition: opacity 0.4s;
@@ -1407,27 +1268,22 @@ html {
   }
 }
 
-/* line 326, ../../../sass/partials/_lightbox.scss */
 .modal {
   font-size: 16px;
 }
-/* line 329, ../../../sass/partials/_lightbox.scss */
 .modal h2 {
   font-weight: bold;
   font-size: 24px;
 }
-/* line 333, ../../../sass/partials/_lightbox.scss */
 .modal a {
   text-decoration: none;
   font-size: 16px;
   color: #272f35;
 }
-/* line 342, ../../../sass/partials/_lightbox.scss */
 .modal li {
   margin-bottom: 5px;
 }
 
-/* line 346, ../../../sass/partials/_lightbox.scss */
 .modal.initial {
   -webkit-transform: translate(0, 0);
   -moz-transform: translate(0, 0);
@@ -1437,7 +1293,6 @@ html {
   opacity: 1;
 }
 
-/* line 359, ../../../sass/partials/_lightbox.scss */
 .modal footer .clear-cancel {
   text-align: right;
   float: right;
