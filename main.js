@@ -2,6 +2,7 @@
 var app = require('app');
 var BrowserWindow = require('browser-window');
 var Menu = require('menu');
+var globalShortcut = require('global-shortcut');
 var menu;
 var template;
 
@@ -16,6 +17,16 @@ app.on('window-all-closed', function() {
 
 
 app.on('ready', function() {
+
+  // Register a 'ctrl+u' shortcut listener.
+  var ret = globalShortcut.register('ctrl+u', function() {
+    console.log('ctrl+u is pressed');
+  });
+
+  if (!ret) {
+    console.log('registration failed');
+  }
+
   mainWindow = new BrowserWindow({ width: 1024, height: 728 });
 
   if (process.env.HOT) {
