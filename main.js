@@ -27,7 +27,7 @@ app.on('ready', function() {
     console.log('registration failed');
   }
 
-  mainWindow = new BrowserWindow({ width: 1024, height: 728 });
+  mainWindow = new BrowserWindow({ width: 1024, height: 728, "title-bar-style": "hidden-inset" });
 
   if (process.env.HOT) {
     mainWindow.loadUrl('file://' + __dirname + '/app/hot-dev-app.html');
