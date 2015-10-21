@@ -44,12 +44,18 @@ var TextBox = React.createClass({
     };
     return (
     	<div>
-    	<span className="character-count" onClick={this.onClick}>{this.state.code.length}</span>
-    	<section className="writer">
-	    	<Codemirror className="text-editor" id="text-editor" value={this.state.code} onChange={this.updateCode} options={options} />
-    	</section>
-      <span onClick={this.clearText}>Clear</span>
+      	
+      	<section className="writer">
+  	    	<Codemirror className="text-editor" id="text-editor" value={this.state.code} onChange={this.updateCode} options={options} />
+      	</section>
+        <div className="border">
+          <ul>
+            <li className="clear"><a className="call-modal" onClick={this.clearText}><span>&times;</span></a></li>
+            <li className="character-count"><span onClick={this.onClick}>{this.state.code.length}</span></li>
+          </ul>
+        </div>
       </div>
+
     );
   }
 });
