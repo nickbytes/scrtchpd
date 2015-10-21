@@ -27,7 +27,33 @@ app.on('ready', function() {
     console.log('registration failed');
   }
 
+  
+
   mainWindow = new BrowserWindow({ width: 1024, height: 728, "title-bar-style": "hidden-inset" });
+
+
+  // Register a 'command+left-arrow' shortcut listener.
+  var exposeOnTop = globalShortcut.register('cmd+u', function() {
+    console.log('command + left arrow is pressed');
+    // Haven't figure out how to call the left arrow button yet.
+    if (mainWindow.isAlwaysOnTop(true)){
+      mainWindow.hide();
+      mainWindow.setAlwaysOnTop(false);
+      mainWindow.setPosition(originalPosition);
+    } else {
+      // We should get the previous window position, save it and then reset when a user undoes this 
+      // var originalPosition = mainWindow.getPosition();
+      // console.log(mainWindow.getPosition())
+      mainWindow.show();
+      mainWindow.setAlwaysOnTop(true);
+      mainWindow.setPosition(0,0);
+      mainWindow.setSize(400, 2000);
+      mainWindow.focus();
+    }
+  });
+
+  console.log(globalShortcut.isRegistered('cmd+u'));
+
 
   if (process.env.HOT) {
     mainWindow.loadUrl('file://' + __dirname + '/app/hot-dev-app.html');
