@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import TextBox from '../components/TextBox';
+import TabsContainer from '../components/TabsContainer';
 
 export default class HomePageContainer extends React.Component {
 
@@ -11,9 +12,9 @@ export default class HomePageContainer extends React.Component {
   render() {
     return (
       <div>
-        <TextBox />
+          <TabsContainer />
       </div>
-      
+
     );
   }
 
