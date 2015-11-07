@@ -141,7 +141,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 
 body {
-  background: rgba(231, 232, 226, 0.5);
+  /*background: rgba(231, 232, 226, 0.5);*/
+  background: #fff;
   font: normal 24px/28px 'Source Sans Pro', Helvetica, "Times New Roman", serif;
 }
 
@@ -1012,12 +1013,12 @@ pre .xml .cdata {
 }
 @media only screen and (min-width: 641px) and (max-width: 971px) {
   .border {
-    width: 100%;
+    /*width: 100%;*/
   }
 }
 @media only screen and (min-width: 972px) {
   .border {
-    width: 3%;
+    /*width: 3%;*/
   }
 }
 .border ul {
@@ -1098,7 +1099,7 @@ pre .xml .cdata {
 }
 @media only screen and (min-width: 641px) and (max-width: 971px) {
   .border a em {
-    left: 30px;
+    /*left: 30px;*/
   }
 }
 .border a:hover em {
