@@ -67,6 +67,11 @@ var TextBox = React.createClass({
       code: ""
     });
   },
+  newNote: function(){
+    this.firebaseRefs.notes.push({
+      note: ""
+    });
+  },
   handleChange: function(event) {
     this.setState({ text: event.target.value });
     this.firebaseRefs.notes.push({
@@ -119,6 +124,7 @@ var TextBox = React.createClass({
           <ul>
             <li className="clear"><a className="call-modal" onClick={this.clearText}><span>&times;</span></a></li>
             <li className="character-count"><span onClick={this.onClick}>{this.state.code.length}</span></li>
+            <li><a onClick={this.newNote}>New note</a></li>
           </ul>
         </div>
       </div>
