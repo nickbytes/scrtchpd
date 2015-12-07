@@ -1,4 +1,5 @@
 import React from 'react';
+
 var Codemirror = require('react-codemirror');
 var LocalStorageMixin = require('react-localstorage')
     require('../../node_modules/codemirror/mode/markdown/markdown.js')
@@ -7,8 +8,9 @@ var LocalStorageMixin = require('react-localstorage')
 var Messages = React.createClass({
   render: function() {
     var messageEls = this.props.notes.map(function(item, index) {
+      var note = item.note.substring(0,50);
       return (
-        <li key={index}><strong>{item.user}</strong>: {item.note}</li>
+        <li key={index}><strong>{item.user}</strong>: {note}</li>
       );
     });
     return <ul className="notes-list">{messageEls}</ul>;
@@ -55,6 +57,10 @@ var TextBox = React.createClass({
     this.setState({counter: this.state.counter + 1});
     console.log('Updated counter:' + this.state.counter);
     this.countChars();
+    console.log('content: ' + newCode);
+    this.firebaseRefs.notes.push({
+      // note: newCode
+    });
   },
   clearText: function() {
     this.setState({
