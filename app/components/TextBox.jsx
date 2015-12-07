@@ -61,6 +61,9 @@ var TextBox = React.createClass({
   },
   handleChange: function(event) {
     this.setState({ text: event.target.value });
+    this.firebaseRefs.notes.push({
+      note: event.target.value
+    });
   },
   handleSubmit: function(e) {
     e.preventDefault();
