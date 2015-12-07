@@ -6,12 +6,12 @@ var LocalStorageMixin = require('react-localstorage')
 
 var Messages = React.createClass({
   render: function() {
-    var messageEls = this.props.messages.map(function(item, index) {
+    var messageEls = this.props.notes.map(function(item, index) {
       return (
         <div key={index}><strong>{item.user}</strong>: {item.note}</div>
       );
     });
-    return <div className="messages">{messageEls}</div>;
+    return <div className="notes">{messageEls}</div>;
   },
   // .getDOMNode is deprecated
   // https://facebook.github.io/react/blog/2015/09/10/react-v0.14-rc1.html#dom-node-refs
@@ -35,16 +35,16 @@ var TextBox = React.createClass({
       text: "",
       code: "Write something",
       counter: 0,
-      messages: []
+      notes: []
     };
     console.log('initial counter:' + this.state.counter);
   },
   addMessage: function(newMessage) {
-    this.firebaseRefs.messages.push(newMessage);
+    this.firebaseRefs.notes.push(newMessage);
   },
   componentWillMount: function() {
-    /* this.bindAsArray(new Firebase('https://ultimate-donut.firebaseio.com/egghead/react/intro/messages'), 'messages'); */
-    this.bindAsArray(new Firebase('https://scrtchpd.firebaseio.com/notes'), 'messages');
+    var firebaseRef = new Firebase("https://scrtchpd.firebaseio.com/notes");
+    this.bindAsArray(firebaseRef, "notes");
   },
   updateCode: function(newCode) {
     this.setState({
@@ -61,6 +61,16 @@ var TextBox = React.createClass({
   },
   handleChange: function(event) {
     this.setState({ text: event.target.value });
+  },
+  handleSubmit: function(e) {
+    e.preventDefault();
+    this.firebaseRefs.notes.push({
+      note: this.state.text
+    });
+    this.setState({ text: "Submitted" });
+  },
+  onChange: function(e) {
+    this.setState({text: e.target.value});
   },
   countChars: function(){
     console.log('counting');
@@ -80,8 +90,12 @@ var TextBox = React.createClass({
     };
     return (
     	<div>
+        <form onSubmit={ this.handleSubmit }>
+          <input onChange={ this.onChange } value={ this.state.text } />
+          <button>{ 'Add #' + (this.state.notes.length + 1) }</button>
+        </form>
       	<div>
-          <Messages messages={this.state.messages} />
+          <Messages notes={this.state.notes} />
           
         </div>
       	<section className="writer">
