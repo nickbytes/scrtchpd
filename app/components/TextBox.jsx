@@ -8,10 +8,10 @@ var Messages = React.createClass({
   render: function() {
     var messageEls = this.props.notes.map(function(item, index) {
       return (
-        <div key={index}><strong>{item.user}</strong>: {item.note}</div>
+        <li key={index}><strong>{item.user}</strong>: {item.note}</li>
       );
     });
-    return <div className="notes">{messageEls}</div>;
+    return <ul className="notes-list">{messageEls}</ul>;
   },
   // .getDOMNode is deprecated
   // https://facebook.github.io/react/blog/2015/09/10/react-v0.14-rc1.html#dom-node-refs
@@ -26,6 +26,8 @@ var Messages = React.createClass({
     this.scrollToBottom();
   }
 });
+
+
 
 var TextBox = React.createClass({
 	displayName: 'TextBox',
@@ -62,7 +64,7 @@ var TextBox = React.createClass({
   handleChange: function(event) {
     this.setState({ text: event.target.value });
     this.firebaseRefs.notes.push({
-      note: event.target.value
+      note: this.state.text
     });
   },
   handleSubmit: function(e) {
@@ -93,12 +95,15 @@ var TextBox = React.createClass({
     };
     return (
     	<div>
+        <div class="notes">
+          <Messages notes={this.state.notes} />
+        </div>
         <form onSubmit={ this.handleSubmit }>
           <input onChange={ this.onChange } value={ this.state.text } />
           <button>{ 'Add #' + (this.state.notes.length + 1) }</button>
         </form>
       	<div>
-          <Messages notes={this.state.notes} />
+        
           
         </div>
       	<section className="writer">
