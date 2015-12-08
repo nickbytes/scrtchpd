@@ -27,6 +27,11 @@ var Archive = React.createClass({
 
 var SearchBar = React.createClass({
   render: function() {
+    return (
+      <form>
+        <input type="text" placeholder="Search..." />
+      </form>
+      )
   }
 });
 
@@ -118,8 +123,11 @@ var TextBox = React.createClass({
     };
     return (
       <div>
-        <div class="notes">
-          <NoteList notes={this.state.notes} />
+        <div class="archive">
+          <SearchBar />
+          <div class="notes">
+            <NoteList notes={this.state.notes} />
+          </div>
         </div>
         <section className="writer">
           <Codemirror className="text-editor" id="text-editor" value={this.state.code} onChange={this.updateCode} options={options} noteID={this.state.noteID} />
