@@ -41,20 +41,14 @@ var NoteList = React.createClass({
     var firebaseRef = new Firebase("https://scrtchpd.firebaseio.com/notes");
     this.bindAsArray(firebaseRef, "notes");
   },
-  activateNote: function(i, item) { 
-    console.log('activateNote');
-    console.log(this.props.notes[i]);
-    /* When a note is selected in the list, populate the main window with it's content */
-    this.props.updateNoteArea(item.note);
-    console.log('full note:' + item.note);
-  },
   render: function() {
     return (
       <ul className="notes-list" >
         {this.props.notes.map(function(item, i) {
           var note = item.note.substring(0,50);
           return (
-            <li onClick={this.activateNote.bind(this, i, item)} key={i}>{note}</li>
+            /* <li onClick={this.activateNote.bind(this, i, item)} key={i}>{note}</li> */
+            <Note item={item} key={i} /> 
           );
         }, this)}
       </ul>
@@ -63,7 +57,14 @@ var NoteList = React.createClass({
 });
 
 var Note = React.createClass({
+  activateNote: function(i, item) { 
+    console.log('activateNote');
+    console.log('full note:' + this.props.item.note);
+  },
   render: function() {
+    return (    
+      <li onClick={this.activateNote} key={this.props.i}>{this.props.item}</li>
+    );
   }
 });
 
@@ -119,13 +120,6 @@ var TextBox = React.createClass({
       <div>
         <div class="notes">
           <NoteList notes={this.state.notes} />
-        </div>
-        <form onSubmit={ this.handleSubmit }>
-          <input onChange={ this.onChange } value={ this.state.text } />
-          <button>{ 'Add #' + (this.state.notes.length + 1) }</button>
-        </form>
-        <div>
-        
         </div>
         <section className="writer">
           <Codemirror className="text-editor" id="text-editor" value={this.state.code} onChange={this.updateCode} options={options} noteID={this.state.noteID} />
