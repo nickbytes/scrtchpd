@@ -5,42 +5,8 @@ var LocalStorageMixin = require('react-localstorage')
     require('../../node_modules/codemirror/mode/markdown/markdown.js')
     require('../../node_modules/codemirror/mode/gfm/gfm.js');
 
-var Pad = React.createClass({
-  render: function() {
-  }
-});
-
-var Archive = React.createClass({
-  render: function() {
-    return (
-      <div className="archive">
-        <form>
-            <input type="text" placeholder="Search" />
-        </form>
-        <div class="notes">
-          <NoteList />
-        </div>
-      </div>
-    );
-  }
-});
-
-var SearchBar = React.createClass({
-  render: function() {
-  }
-});
-
-var NoteList = React.createClass({
-  mixins: [LocalStorageMixin, ReactFireMixin],
-  getInitialState: function() {
-    return {
-      notes: []
-    };
-  },
-  componentWillMount: function() {
-    var firebaseRef = new Firebase("https://scrtchpd.firebaseio.com/notes");
-    this.bindAsArray(firebaseRef, "notes");
-  },
+var Messages = React.createClass({
+  
   activateNote: function(i, item) { 
     console.log('activateNote');
     console.log(this.props.notes[i]);
@@ -62,15 +28,12 @@ var NoteList = React.createClass({
   }
 });
 
-var Note = React.createClass({
-  render: function() {
-  }
-});
+
 
 var TextBox = React.createClass({
-  displayName: 'TextBox',
+	displayName: 'TextBox',
   mixins: [LocalStorageMixin, ReactFireMixin],
-  getInitialState: function() {
+	getInitialState: function() {
     return {
       text: "",
       code: "Write something",
@@ -78,6 +41,13 @@ var TextBox = React.createClass({
       notes: []
     };
     console.log('initial counter:' + this.state.counter);
+  },
+  addMessage: function(newMessage) {
+    this.firebaseRefs.notes.push(newMessage);
+  },
+  componentWillMount: function() {
+    var firebaseRef = new Firebase("https://scrtchpd.firebaseio.com/notes");
+    this.bindAsArray(firebaseRef, "notes");
   },
   updateCode: function(newCode, item) {
     this.setState({
@@ -87,14 +57,54 @@ var TextBox = React.createClass({
     console.log('Updated counter:' + this.state.counter);
     this.countChars();
     console.log('content: ' + newCode);
+
+    this.firebaseRefs.notes.push({
+      // note: newCode
+    });
+    // Same as the previous example, except we will also display an alert
+    // message when the data has finished synchronizing.
+    var onComplete = function(error) {
+      if (error) {
+        console.log('Synchronization failed');
+      } else {
+        console.log('Synchronization succeeded');
+      }
+    };
+
+    /* item.update({ first: 'Wilma', last: 'Flintstone' }, onComplete); */
   },
   clearText: function() {
     this.setState({
       code: ""
     });
   },
+  loadNote: function(){
+    /* If it's a new note, create a new note and load it here. 
+    If it's an existing note, load it here and set the update for the object */ 
+  }
+  newNote: function(){
+    this.firebaseRefs.notes.push({
+      note: ""
+    });
+  },
   handleChange: function(event) {
     this.setState({ text: event.target.value });
+    this.firebaseRefs.notes.push({
+      note: this.state.text
+    });
+  },
+  handleSubmit: function(e) {
+    e.preventDefault();
+    this.firebaseRefs.notes.push({
+      note: this.state.text
+    });
+    this.setState({ text: "Submitted" });
+  },
+  handleNoteAreaUpdate: function(item){
+    this.setState({
+      code: item,
+      noteID: item
+    });
   },
   onChange: function(e) {
     this.setState({text: e.target.value});
@@ -104,32 +114,32 @@ var TextBox = React.createClass({
     console.log(this.state.code.length);
   },
   render: function() {
-    var options = {
-      mode: {
+  	var options = {
+  		mode: {
         name: "gfm",
         highlightFormatting: true
-      },
+	    },
       // mode: "markdown",
-      lineNumbers: false,
-      lineWrapping: true,
-      autofocus: true,
-      extraKeys: {"Enter": "newlineAndIndentContinueMarkdownList"},
+	    lineNumbers: false,
+	    lineWrapping: true,
+	    autofocus: true,
+	    extraKeys: {"Enter": "newlineAndIndentContinueMarkdownList"},
     };
     return (
-      <div>
+    	<div>
         <div class="notes">
-          <NoteList notes={this.state.notes} />
+          <Messages notes={this.state.notes} updateNoteArea={this.handleNoteAreaUpdate} />
         </div>
         <form onSubmit={ this.handleSubmit }>
           <input onChange={ this.onChange } value={ this.state.text } />
           <button>{ 'Add #' + (this.state.notes.length + 1) }</button>
         </form>
-        <div>
+      	<div>
         
         </div>
-        <section className="writer">
-          <Codemirror className="text-editor" id="text-editor" value={this.state.code} onChange={this.updateCode} options={options} noteID={this.state.noteID} />
-        </section>
+      	<section className="writer">
+  	    	<Codemirror className="text-editor" id="text-editor" value={this.state.code} onChange={this.updateCode} options={options} noteID={this.state.noteID} />
+      	</section>
         <div className="border">
           <ul>
             <li className="clear"><a className="call-modal" onClick={this.clearText}><span>&times;</span></a></li>
@@ -141,7 +151,5 @@ var TextBox = React.createClass({
     );
   }
 });
-
-
 
 module.exports = TextBox;
