@@ -31,20 +31,22 @@ var SearchBar = React.createClass({
       <form>
         <input type="text" placeholder="Search..." />
       </form>
-      )
+    )
   }
 });
 
 var NoteList = React.createClass({
-  mixins: [LocalStorageMixin, ReactFireMixin],
+  mixins: [ReactFireMixin],
   getInitialState: function() {
     return {
       notes: []
     };
   },
-  componentWillMount: function() {
-    var firebaseRef = new Firebase("https://scrtchpd.firebaseio.com/notes");
-    this.bindAsArray(firebaseRef, "notes");
+  
+  activateNote: function(i, item) { 
+    console.log('activateNote');
+    console.log('full note:' + item.note);
+    this.props.updateNoteArea(item.note);
   },
   render: function() {
     return (
@@ -52,8 +54,8 @@ var NoteList = React.createClass({
         {this.props.notes.map(function(item, i) {
           var note = item.note.substring(0,50);
           return (
-            /* <li onClick={this.activateNote.bind(this, i, item)} key={i}>{note}</li> */
-            <Note item={item} key={i} /> 
+            <li onClick={this.activateNote.bind(this, i, item)} key={i}>{note}</li>
+            /* <Note onClick={this.activateNote.bind(this, i, item)} item={item} key={i} /> */ 
           );
         }, this)}
       </ul>
@@ -62,20 +64,17 @@ var NoteList = React.createClass({
 });
 
 var Note = React.createClass({
-  activateNote: function(i, item) { 
-    console.log('activateNote');
-    console.log('full note:' + this.props.item.note);
-  },
+
   render: function() {
     return (    
-      <li onClick={this.activateNote} key={this.props.i}>{this.props.item}</li>
+      <li key={this.props.i}>{this.props.item}</li>
     );
   }
 });
 
 var TextBox = React.createClass({
   displayName: 'TextBox',
-  mixins: [LocalStorageMixin, ReactFireMixin],
+  mixins: [ReactFireMixin],
   getInitialState: function() {
     return {
       text: "",
@@ -85,29 +84,27 @@ var TextBox = React.createClass({
     };
     console.log('initial counter:' + this.state.counter);
   },
+  componentWillMount: function() {
+    var firebaseRef = new Firebase("https://scrtchpd.firebaseio.com/notes");
+    this.bindAsArray(firebaseRef, "notes");
+  },
   updateCode: function(newCode, item) {
     this.setState({
         code: newCode
     });
     this.setState({counter: this.state.counter + 1});
     console.log('Updated counter:' + this.state.counter);
-    this.countChars();
-    console.log('content: ' + newCode);
+    console.log('content: ' + newCode);    
   },
   clearText: function() {
     this.setState({
       code: ""
     });
   },
-  handleChange: function(event) {
-    this.setState({ text: event.target.value });
-  },
-  onChange: function(e) {
-    this.setState({text: e.target.value});
-  },
-  countChars: function(){
-    console.log('counting');
-    console.log(this.state.code.length);
+  handleNoteAreaUpdate: function(item){
+    this.setState({
+      code: item,
+    });
   },
   render: function() {
     var options = {
@@ -123,14 +120,14 @@ var TextBox = React.createClass({
     };
     return (
       <div>
-        <div class="archive">
+        <div className="archive">
           <SearchBar />
-          <div class="notes">
-            <NoteList notes={this.state.notes} />
+          <div className="notes">
+            <NoteList notes={this.state.notes} updateNoteArea={this.handleNoteAreaUpdate} />
           </div>
         </div>
         <section className="writer">
-          <Codemirror className="text-editor" id="text-editor" value={this.state.code} onChange={this.updateCode} options={options} noteID={this.state.noteID} />
+          <Codemirror className="text-editor" id="text-editor" value={this.state.code} onChange={this.updateCode} options={options} />
         </section>
         <div className="border">
           <ul>
