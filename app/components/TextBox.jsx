@@ -49,7 +49,7 @@ var TextBox = React.createClass({
     var firebaseRef = new Firebase("https://scrtchpd.firebaseio.com/notes");
     this.bindAsArray(firebaseRef, "notes");
   },
-  updateCode: function(newCode) {
+  updateCode: function(newCode, item) {
     this.setState({
         code: newCode
     });
@@ -57,15 +57,31 @@ var TextBox = React.createClass({
     console.log('Updated counter:' + this.state.counter);
     this.countChars();
     console.log('content: ' + newCode);
+
     this.firebaseRefs.notes.push({
       // note: newCode
     });
+    // Same as the previous example, except we will also display an alert
+    // message when the data has finished synchronizing.
+    var onComplete = function(error) {
+      if (error) {
+        console.log('Synchronization failed');
+      } else {
+        console.log('Synchronization succeeded');
+      }
+    };
+
+    /* item.update({ first: 'Wilma', last: 'Flintstone' }, onComplete); */
   },
   clearText: function() {
     this.setState({
       code: ""
     });
   },
+  loadNote: function(){
+    /* If it's a new note, create a new note and load it here. 
+    If it's an existing note, load it here and set the update for the object */ 
+  }
   newNote: function(){
     this.firebaseRefs.notes.push({
       note: ""
@@ -85,11 +101,9 @@ var TextBox = React.createClass({
     this.setState({ text: "Submitted" });
   },
   handleNoteAreaUpdate: function(item){
-    this.updateNoteArea(item);
-  },
-  updateNoteArea:function(item){
     this.setState({
-      code: item
+      code: item,
+      noteID: item
     });
   },
   onChange: function(e) {
@@ -124,7 +138,7 @@ var TextBox = React.createClass({
         
         </div>
       	<section className="writer">
-  	    	<Codemirror className="text-editor" id="text-editor" value={this.state.code} onChange={this.updateCode} options={options} />
+  	    	<Codemirror className="text-editor" id="text-editor" value={this.state.code} onChange={this.updateCode} options={options} noteID={this.state.noteID} />
       	</section>
         <div className="border">
           <ul>
