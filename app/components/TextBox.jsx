@@ -7,9 +7,12 @@ var LocalStorageMixin = require('react-localstorage')
 
 var Messages = React.createClass({
   
-  activateNote: function(i) { 
+  activateNote: function(i, item) { 
     console.log('activateNote');
     console.log(this.props.notes[i]);
+    /* When a note is selected in the list, populate the main window with it's content */
+    this.props.updateNoteArea(item.note);
+    console.log('full note:' + item.note);
   },
   render: function() {
     return (
@@ -17,7 +20,7 @@ var Messages = React.createClass({
         {this.props.notes.map(function(item, i) {
           var note = item.note.substring(0,50);
           return (
-            <li onClick={this.activateNote.bind(this, i)} key={i}>{note}</li>
+            <li onClick={this.activateNote.bind(this, i, item)} key={i}>{note}</li>
           );
         }, this)}
       </ul>
@@ -81,6 +84,14 @@ var TextBox = React.createClass({
     });
     this.setState({ text: "Submitted" });
   },
+  handleNoteAreaUpdate: function(item){
+    this.updateNoteArea(item);
+  },
+  updateNoteArea:function(item){
+    this.setState({
+      code: item
+    });
+  },
   onChange: function(e) {
     this.setState({text: e.target.value});
   },
@@ -103,7 +114,7 @@ var TextBox = React.createClass({
     return (
     	<div>
         <div class="notes">
-          <Messages notes={this.state.notes} />
+          <Messages notes={this.state.notes} updateNoteArea={this.handleNoteAreaUpdate} />
         </div>
         <form onSubmit={ this.handleSubmit }>
           <input onChange={ this.onChange } value={ this.state.text } />
