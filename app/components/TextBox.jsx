@@ -6,26 +6,22 @@ var LocalStorageMixin = require('react-localstorage')
     require('../../node_modules/codemirror/mode/gfm/gfm.js');
 
 var Messages = React.createClass({
+  
+  activateNote: function(i) { 
+    console.log('activateNote');
+    console.log(this.props.notes[i]);
+  },
   render: function() {
-    var messageEls = this.props.notes.map(function(item, index) {
-      var note = item.note.substring(0,50);
-      return (
-        <li key={index}><strong>{item.user}</strong>: {note}</li>
-      );
-    });
-    return <ul className="notes-list">{messageEls}</ul>;
-  },
-  // .getDOMNode is deprecated
-  // https://facebook.github.io/react/blog/2015/09/10/react-v0.14-rc1.html#dom-node-refs
-  scrollToBottom: function() {
-    // var el = ReactDOM.findDOMNode(this);
-    // el.scrollTop = el.scrollHeight;
-  },
-  componentDidMount: function() {
-    this.scrollToBottom();
-  },
-  componentDidUpdate: function() {
-    this.scrollToBottom();
+    return (
+      <ul className="notes-list" >
+        {this.props.notes.map(function(item, i) {
+          var note = item.note.substring(0,50);
+          return (
+            <li onClick={this.activateNote.bind(this, i)} key={i}>{note}</li>
+          );
+        }, this)}
+      </ul>
+    );
   }
 });
 
@@ -115,7 +111,6 @@ var TextBox = React.createClass({
         </form>
       	<div>
         
-          
         </div>
       	<section className="writer">
   	    	<Codemirror className="text-editor" id="text-editor" value={this.state.code} onChange={this.updateCode} options={options} />
@@ -128,7 +123,6 @@ var TextBox = React.createClass({
           </ul>
         </div>
       </div>
-
     );
   }
 });
