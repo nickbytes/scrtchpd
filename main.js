@@ -6,8 +6,11 @@ var globalShortcut = require('global-shortcut');
 var menu;
 var template;
 
-require('electron-debug')();
+require('electron-debug')({
+  showDevTools: true
+});
 require('crash-reporter').start();
+
 
 var mainWindow = null;
 

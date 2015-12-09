@@ -33,8 +33,12 @@ var NoteList = React.createClass({
   activateNote: function(i, item) { 
     /* This takes the clicked note, and displays it's full content in the main text window */
     console.log('full note:' + item);
+    this.props.updateNoteArea(item);
     
-    this.props.updateNoteArea(item.note);
+    var ref = new Firebase("https://scrtchpd.firebaseio.com/notes");
+    
+    console.log(item);
+    /* this.props.updateNoteArea(item.note); */
   },
   render: function() {
     return (
@@ -83,20 +87,24 @@ var TextBox = React.createClass({
     /* On update, set the state of Codemirror to the newly typed text. Also save the new text to Firebase */
     var firebaseRef = new Firebase("https://scrtchpd.firebaseio.com/notes");
       /* Why does this only work if defined above? Shouldn't it pull in vars from other functions? */
-    var testRef = firebaseRef.child('-K4xGsnubFLoN4I7otIs'); 
-    testRef.update({
-      "note": "testUpdate"
-    });
+    var testRef = firebaseRef.child(this.state.item['.key']); 
     /* This code sets the text of Codemirror */
     this.setState({
         code: newCode
     });
-    console.log('Item: ' + this.state.code);
+    testRef.update({
+      "note": this.state.code
+    });
+    var note = this.state.item['.key'];
+    console.log('note:');
+    console.log(note);
+    console.log('New code');
+    console.log(newCode);
   },
   handleNoteAreaUpdate: function(item){
     /* This takes the actived note, and sets the state of Codemirror that that note's full text. */
     this.setState({
-      code: item,
+      code: item.note,
       item: item
     });
     console.log('should be object:' + item);
