@@ -87,6 +87,10 @@ var TextBox = React.createClass({
   componentWillMount: function() {
     var firebaseRef = new Firebase("https://scrtchpd.firebaseio.com/notes");
     this.bindAsArray(firebaseRef, "notes");
+    this.loadNote();
+  },
+  loadNote: function(){
+    console.log('NOTE:' + this.state.notes[0]);
   },
   updateCode: function(newCode, item) {
     this.setState({
