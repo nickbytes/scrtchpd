@@ -112,7 +112,7 @@ var TextBox = React.createClass({
     console.log(newNoteRef);
     
     this.setState({
-      code: emptyNote
+      code: "test"
     });
   },
   render: function() {
@@ -135,7 +135,7 @@ var TextBox = React.createClass({
           </div>
         </div>
         <section className="writer">
-          <Codemirror className="text-editor" id="text-editor" value={this.state.code} options={options} />
+          <Codemirror className="text-editor" id="text-editor" value={this.state.code} onChange={this.updateCode} options={options} />
         </section>
         <div className="border">
           <ul>
