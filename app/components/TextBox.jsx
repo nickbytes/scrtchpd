@@ -103,17 +103,13 @@ var TextBox = React.createClass({
   },
   newNote: function(){
     var newNoteRef = this.firebaseRefs.notes.push({
-      "note": "Write something",
+      "note": "Write something!",
       "created_at": Firebase.ServerValue.TIMESTAMP,
       "updated_at": Firebase.ServerValue.TIMESTAMP
     });
     this.bindAsObject(newNoteRef, "emptyNote");
-    console.log(this.state.emptyNote);
-    console.log(newNoteRef);
-    
-    this.setState({
-      code: "test"
-    });
+    this.setState({code: newNoteRef.toString()});
+    this.unbind("emptyNote");
   },
   render: function() {
     var options = {
