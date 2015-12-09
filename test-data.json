@@ -1,6 +1,16 @@
 {
   "notes": {
-    "n1": { "user": "mchen", "note": "Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Maecenas faucibus mollis interdum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus." },
-    "n2": { "user": "mchen", "note": "Curabitur blandit tempus porttitor. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus." }
+    "n1": { 
+      "user": "mchen", 
+      "note": "Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Maecenas faucibus mollis interdum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.", 
+      "created_at": "2015-02-05T20:29:44.575Z",
+      "updated_at": "2015-03-05T20:29:44.575Z"
+    },
+    "n2": { 
+      "user": "mchen", 
+      "note": "Curabitur blandit tempus porttitor. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+      "created_at": "2015-06-05T20:29:44.575Z",
+      "updated_at": "2015-06-15T20:29:44.575Z" 
+    }
   }
 }

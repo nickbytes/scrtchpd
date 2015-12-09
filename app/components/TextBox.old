@@ -13,8 +13,6 @@ var Messages = React.createClass({
     /* When a note is selected in the list, populate the main window with it's content */
     this.props.updateNoteArea(item.note);
     console.log('full note:' + item.note);
-    console.log('item title:' + item);
-
   },
   render: function() {
     return (

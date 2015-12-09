@@ -29,15 +29,10 @@ var NoteList = React.createClass({
       notes: []
     };
   },
-  
   activateNote: function(i, item) { 
     /* This takes the clicked note, and displays it's full content in the main text window */
     console.log('full note:' + item);
     this.props.updateNoteArea(item);
-    
-    var ref = new Firebase("https://scrtchpd.firebaseio.com/notes");
-    
-    console.log(item);
     /* this.props.updateNoteArea(item.note); */
   },
   render: function() {
@@ -48,7 +43,7 @@ var NoteList = React.createClass({
           var note = item.note.substring(0,50);
           return (
             /* Using this li element here, because the onClick function doesn't want to work on the Note compenent below */
-            <li onClick={this.activateNote.bind(this, i, item)} key={i}>{note}</li>
+            <li onClick={this.activateNote.bind(this, i, item)} key={i}><strong>{item.updated_at}</strong>{note}</li>
             /* <Note onClick={this.activateNote.bind(this, i, item)} item={item} key={i} /> */ 
           );
         }, this)}
@@ -93,13 +88,10 @@ var TextBox = React.createClass({
         code: newCode
     });
     testRef.update({
-      "note": this.state.code
+      "note": this.state.code,
+      "updated_at": Firebase.ServerValue.TIMESTAMP
     });
     var note = this.state.item['.key'];
-    console.log('note:');
-    console.log(note);
-    console.log('New code');
-    console.log(newCode);
   },
   handleNoteAreaUpdate: function(item){
     /* This takes the actived note, and sets the state of Codemirror that that note's full text. */
@@ -108,6 +100,20 @@ var TextBox = React.createClass({
       item: item
     });
     console.log('should be object:' + item);
+  },
+  newNote: function(){
+    var newNoteRef = this.firebaseRefs.notes.push({
+      "note": "Write something",
+      "created_at": Firebase.ServerValue.TIMESTAMP,
+      "updated_at": Firebase.ServerValue.TIMESTAMP
+    });
+    this.bindAsObject(newNoteRef, "emptyNote");
+    console.log(this.state.emptyNote);
+    console.log(newNoteRef);
+    
+    this.setState({
+      code: emptyNote
+    });
   },
   render: function() {
     var options = {
@@ -129,7 +135,7 @@ var TextBox = React.createClass({
           </div>
         </div>
         <section className="writer">
-          <Codemirror className="text-editor" id="text-editor" value={this.state.code} onChange={this.updateCode} options={options} />
+          <Codemirror className="text-editor" id="text-editor" value={this.state.code} options={options} />
         </section>
         <div className="border">
           <ul>
