@@ -87,23 +87,17 @@ var TextBox = React.createClass({
   componentWillMount: function() {
     var firebaseRef = new Firebase("https://scrtchpd.firebaseio.com/notes");
     this.bindAsArray(firebaseRef, "notes");
-    this.loadNote();
-  },
-  loadNote: function(){
-    console.log('NOTE:' + this.state.notes[0]);
   },
   updateCode: function(newCode, item) {
+    var testRef = firebaseRef.child('-K4xGsnubFLoN4I7otIs'); 
+     testRef.update({
+      "note": "t"
+    });
+     console.log(testRef);
     this.setState({
         code: newCode
     });
-    this.setState({counter: this.state.counter + 1});
-    console.log('Updated counter:' + this.state.counter);
     console.log('content: ' + newCode);    
-  },
-  clearText: function() {
-    this.setState({
-      code: ""
-    });
   },
   handleNoteAreaUpdate: function(item){
     this.setState({
