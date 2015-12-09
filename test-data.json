@@ -1,29 +1,4 @@
 {
-  "rooms": {
-    "one": {
-      "name": "room alpha",
-      "type": "private"
-    },
-    "two": { },
-    "three": { }
-  },
-  "members": {
-    "one": {
-      "mchen": true,
-      "hmadi": true
-    },
-    "two": { },
-    "three": { }
-  },
-  "messages": {
-    "one": {
-      "m1": { "sender": "mchen", "message": "foo" },
-      "m2": {  },
-      "m3": {  }
-    },
-    "two": {  },
-    "three": {  }
-  },
   "notes": {
     "n1": { "user": "mchen", "note": "Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Maecenas faucibus mollis interdum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus." },
     "n2": { "user": "mchen", "note": "Curabitur blandit tempus porttitor. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus." }

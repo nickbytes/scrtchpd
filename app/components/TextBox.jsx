@@ -32,7 +32,8 @@ var NoteList = React.createClass({
   
   activateNote: function(i, item) { 
     /* This takes the clicked note, and displays it's full content in the main text window */
-    console.log('full note:' + item.note);
+    console.log('full note:' + item);
+    
     this.props.updateNoteArea(item.note);
   },
   render: function() {
@@ -74,10 +75,11 @@ var TextBox = React.createClass({
     console.log('initial counter:' + this.state.counter);
   },
   componentWillMount: function() {
+    /* Grab the DB from firebase. Set the results as an array of notes. Why isn't firebaseRef accessible from other functions? */
     var firebaseRef = new Firebase("https://scrtchpd.firebaseio.com/notes");
     this.bindAsArray(firebaseRef, "notes");
   },
-  updateCode: function(newCode, item) {
+  updateCode: function(newCode) {
     /* On update, set the state of Codemirror to the newly typed text. Also save the new text to Firebase */
     var firebaseRef = new Firebase("https://scrtchpd.firebaseio.com/notes");
       /* Why does this only work if defined above? Shouldn't it pull in vars from other functions? */
@@ -89,12 +91,15 @@ var TextBox = React.createClass({
     this.setState({
         code: newCode
     });
+    console.log('Item: ' + this.state.code);
   },
   handleNoteAreaUpdate: function(item){
     /* This takes the actived note, and sets the state of Codemirror that that note's full text. */
     this.setState({
       code: item,
+      item: item
     });
+    console.log('should be object:' + item);
   },
   render: function() {
     var options = {
