@@ -12,10 +12,18 @@ var Pad = React.createClass({
 
 var SearchBar = React.createClass({
   /* Search form. This component lives at the top of the Archive component above the notes list, */
+  getInitialState: function() {
+      return {searchKey: ""};
+  },
+  searchHandler: function(event) {
+      var searchKey = event.target.value;
+      this.setState({searchKey: searchKey});
+      this.props.searchHandler(searchKey);
+  },
   render: function() {
     return (
       <form>
-        <input type="text" placeholder="Search..." />
+         <input type="search" value={this.state.symbol} onChange={this.searchHandler}/>
       </form>
     )
   }
@@ -78,6 +86,18 @@ var TextBox = React.createClass({
     var firebaseRef = new Firebase("https://scrtchpd.firebaseio.com/notes");
     this.bindAsArray(firebaseRef, "notes");
   },
+  searchHandler:function(key, searchKey) {
+    
+    var results = this.state.notes.filter(function (element) {
+        var note = element.note;
+        console.log(note.toLowerCase().indexOf(key.toLowerCase()) > -1);
+        return note.toLowerCase().indexOf(key.toLowerCase()) > -1; 
+    });
+    console.log(results);
+    this.setState({
+      displayedNotes: results
+    })      
+  },
   updateCode: function(newCode) {
     /* On update, set the state of Codemirror to the newly typed text. Also save the new text to Firebase */
     var firebaseRef = new Firebase("https://scrtchpd.firebaseio.com/notes");
@@ -125,7 +145,7 @@ var TextBox = React.createClass({
     return (
       <div>
         <div className="archive">
-          <SearchBar />
+          <SearchBar searchHandler={this.searchHandler}/>
           <div className="notes">
             <NoteList notes={this.state.notes} updateNoteArea={this.handleNoteAreaUpdate} />
           </div>
