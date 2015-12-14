@@ -34,8 +34,14 @@ var NoteList = React.createClass({
   mixins: [ReactFireMixin],
   getInitialState: function() {
     return {
-      notes: []
+      
     };
+  },
+  componentWillMount: function() {
+    this.setState({
+      displayedNotes: this.props.notes
+    });
+    console.log(this.props.notes);
   },
   activateNote: function(i, item) { 
     /* This takes the clicked note, and displays it's full content in the main text window */
@@ -77,9 +83,9 @@ var TextBox = React.createClass({
       text: "",
       code: "Write something",
       counter: 0,
-      notes: []
+      notes: [],
+      displayedNotes: []
     };
-    console.log('initial counter:' + this.state.counter);
   },
   componentWillMount: function() {
     /* Grab the DB from firebase. Set the results as an array of notes. Why isn't firebaseRef accessible from other functions? */
@@ -87,16 +93,13 @@ var TextBox = React.createClass({
     this.bindAsArray(firebaseRef, "notes");
   },
   searchHandler:function(key, searchKey) {
-    
     var results = this.state.notes.filter(function (element) {
-        var note = element.note;
-        console.log(note.toLowerCase().indexOf(key.toLowerCase()) > -1);
-        return note.toLowerCase().indexOf(key.toLowerCase()) > -1; 
+      var note = element.note;
+      return note.toLowerCase().indexOf(key.toLowerCase()) > -1; 
     });
-    console.log(results);
     this.setState({
       displayedNotes: results
-    })      
+    });
   },
   updateCode: function(newCode) {
     /* On update, set the state of Codemirror to the newly typed text. Also save the new text to Firebase */
@@ -112,6 +115,7 @@ var TextBox = React.createClass({
       "updated_at": Firebase.ServerValue.TIMESTAMP
     });
     var note = this.state.item['.key'];
+    console.log(this.state.displayedNotes);
   },
   handleNoteAreaUpdate: function(item){
     /* This takes the actived note, and sets the state of Codemirror that that note's full text. */
@@ -119,7 +123,6 @@ var TextBox = React.createClass({
       code: item.note,
       item: item
     });
-    console.log('should be object:' + item);
   },
   newNote: function(){
     var newNoteRef = this.firebaseRefs.notes.push({
@@ -142,12 +145,13 @@ var TextBox = React.createClass({
       autofocus: true,
       extraKeys: {"Enter": "newlineAndIndentContinueMarkdownList"},
     };
+
     return (
       <div>
         <div className="archive">
           <SearchBar searchHandler={this.searchHandler}/>
           <div className="notes">
-            <NoteList notes={this.state.notes} updateNoteArea={this.handleNoteAreaUpdate} />
+            <NoteList notes={this.state.displayedNotes} updateNoteArea={this.handleNoteAreaUpdate} />
           </div>
         </div>
         <section className="writer">
